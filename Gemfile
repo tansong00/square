@@ -45,6 +45,4 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# bootstrap
-gem 'anjlab-bootstrap-rails', '~> 3.0.0.3', :require => 'bootstrap-rails'
-gem 'font-awesome-rails'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'

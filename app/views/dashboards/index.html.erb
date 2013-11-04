@@ -1,2 +1,15 @@
-<h1>Dashboards#index</h1>
-<p>Find me in app/views/dashboards/index.html.erb</p>
+<div class="tile middle segment square search">
+  <input class="square input search" type="text" maxlength="30" placeholder="请输入要搜索的内容" value="" >
+
+  <div class="ui selection dropdown">
+    <input type="hidden" name="gender">
+    <div class="default text" data-value="male">商品SKU</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item" data-value="male">商品SKU</div>
+      <div class="item" data-value="female">标签</div>
+    </div>
+  </div>
+
+  <a class="square search button">搜 索</a>
+</div>

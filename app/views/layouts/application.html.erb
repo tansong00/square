@@ -9,10 +9,9 @@
 <body>
 
 <div class="ui top inverted sidebar menu active square">
-  <div class="header item">Top Sidebar menu</div>
-  <a class="item">One</a>
-  <a class="item">Two</a>
-  <a class="item">Three</a>
+  <div class="header item">Square picture manager</div>
+  <%= link_to '首页', root_path, class: 'item' %>
+  <%= link_to semantic_icon(:upload) + '上传新图片', new_album_path, class: 'item' %>
 </div>
 
 <div class="segment">

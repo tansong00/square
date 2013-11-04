@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  album_id: 1
+  file_name: MyString
+  path: MyString
+  file: MyString
+  file_processing: false
+
+two:
+  album_id: 1
+  file_name: MyString
+  path: MyString
+  file: MyString
+  file_processing: false

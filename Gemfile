@@ -46,3 +46,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+
+gem 'carrierwave'

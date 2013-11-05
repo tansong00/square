@@ -1,10 +1,19 @@
 class AlbumsController < ApplicationController
-  def new
+  def index
 
   end
 
-  def create
+  def new
+    @album = Album.new
+  end
 
+  def create
+    @album = Album.new album_params
+    if @album.save
+      redirect_to albums_url
+    else
+      render :new
+    end
   end
 
   def edit
@@ -17,5 +26,10 @@ class AlbumsController < ApplicationController
 
   def show
 
+  end
+
+  private
+  def album_params
+    params.require(:album).permit(:title, :sku)
   end
 end

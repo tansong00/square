@@ -1,3 +1,39 @@
-<div class="tile large square clearfix">
+<div id="album-js"></div>
 
+<div class="tile middle square ui grid album">
+    <div class="three wide column pane">
+        <div class="square pie black list">
+          <ul id="shopmenu">
+            <li><%= link_to '相册列表', albums_path %></li>
+            <li><span class="active">新建相册</span></li>
+            <li><%= link_to '相册搜索', root_path %></li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="thirteen wide column pane">
+        <div class="square pie">
+          <%= form_for @album do |f| %>
+              <div class="ui form">
+                <div class="field">
+                  <%= f.label :title %>
+                  <div class="ui icon input">
+                    <i class="code icon"></i>
+                    <%= f.text_field :title %>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <%= f.label :sku %>
+                  <div class="ui icon input">
+                    <i class="url icon"></i>
+                    <%= f.text_field :sku %>
+                  </div>
+                </div>
+
+                <%= f.submit class: 'ui black fluid button' %>
+              </div>
+          <% end %>
+        </div>
+    </div>
 </div>

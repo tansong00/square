@@ -1,0 +1,47 @@
+.square.album {
+  .square.pie {
+    margin-left: 0;
+  }
+  .square.pie.black {
+    z-index: 1000;
+    padding-right: 0;
+    margin-left: 10px;
+    ul {
+      padding-left: 0;
+    }
+    a, span {
+      display: block;
+      height: 33px;
+      color: #fff;
+      -webkit-transition: 0.5s;
+      -moz-transition: 0.5s;
+      -o-transition: 0.5s;
+      transition: 0.5s;
+      text-decoration: none;
+      &.active {
+        color:#000;
+        background: #fff;
+        padding:0 0 0 30px;
+      }
+      &:hover {
+        @extend .active;
+      }
+    }
+    span {
+      cursor: default;
+    }
+    li {
+      cursor: pointer;
+      font-size: 16px;
+      outline: none;
+      margin-top: 10px;
+      height: 33px;
+      line-height: 33px;
+      text-align: center;
+    }
+  }
+  .pane {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}

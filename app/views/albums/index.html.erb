@@ -12,6 +12,13 @@
   </div>
 
   <div class="thirteen wide column pane">
-    <div class="square pie"></div>
+    <div class="square pie ui grid stackable five column">
+      <% @albums.each do |album| %>
+          <div class="column">
+            <%= image_tag album.cover.url %>
+            <p class="square center sku"><%= album.sku %></p>
+          </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   def index
-
+    @albums = Album.page params[:page]
   end
 
   def new

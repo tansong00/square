@@ -48,3 +48,7 @@ end
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 gem 'carrierwave'
+gem 'mini_magick'
+gem 'mime-types'
+
+gem 'kaminari'

@@ -48,6 +48,12 @@
     margin-top: 0.5em;
     font-size: 0.8em;
   }
+  .cover {
+    height: 140px;
+    width: 140px;
+    display: table-cell;
+    vertical-align: middle;
+  }
 }
 
 .square.center {

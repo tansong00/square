@@ -13,7 +13,7 @@
 
     <div class="thirteen wide column pane">
         <div class="square pie">
-          <%= form_for @album do |f| %>
+          <%= form_for @album, multipart: true do |f| %>
             <div class="ui grid">
               <div class="four wide column"></div>
               <div class="eight wide column">
@@ -31,6 +31,14 @@
                     <div class="ui icon input">
                       <i class="url icon"></i>
                       <%= f.text_field :sku %>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <%= f.label :cover %>
+                    <div class="ui icon input">
+                      <i class="file icon"></i>
+                      <%= f.file_field :cover %>
                     </div>
                   </div>
 

@@ -15,8 +15,10 @@
     <div class="square pie ui grid stackable five column">
       <% @albums.each do |album| %>
           <div class="column">
-            <%= image_tag album.cover.url %>
-            <p class="square center sku"><%= album.sku %></p>
+            <div class="square center cover">
+              <%= image_tag album.cover.url %>
+            </div>
+            <p class="square sku center"><%= album.sku %></p>
           </div>
       <% end %>
     </div>

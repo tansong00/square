@@ -45,6 +45,12 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development do
+  gem 'better_errors'
+  gem 'pry'
+  gem 'binding_of_caller'
+end
+
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 gem 'carrierwave'

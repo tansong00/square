@@ -1,0 +1,40 @@
+<div id="picture-js"></div>
+
+<div class="ui grid pictures">
+  <div class="fifteen wide column">
+    <div class="square pie nomargin" id="pic-pane">
+      <div id="pic-gallery" class="ui grid stackable five column" style="display: none">
+        <% @pictures.each do |pic| %>
+            <div class="column">
+              <div class="square center cover">
+                <%= link_to image_tag(pic.file.url(:thumb)), '#' %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+      <div id="pic-uploader">
+        <%= form_tag '#', id: 'fileupload', multipart: true, data: {url: '#'} do %>
+            <div class="ui fluid three item menu">
+                <span class="item" style="overflow: hidden;">
+                    <i class="icon upload"></i>添加文件
+                    <input type="file" name="files[]" multiple="">
+                </span>
+                <span class="item start-upload"><i class="icon checkmark"></i>开始上传</span>
+                <span class="item stop-upload"><i class="icon ban circle"></i>停止上传</span>
+            </div>
+            <div id="files-container" class="ui divided list"></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="one wide column">
+    <div class="ui left pointing dropdown icon button">
+      <i class="settings icon"></i>
+      <div class="menu">
+        <div class="item" id="bupload"><i class="upload icon"></i>上传</div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,42 @@
+.pictures {
+}
+#pic-pane {
+  width: 100%;
+  height: 406px;
+  padding: 0;
+  overflow: hidden;
+}
+
+#pic-gallery {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#pic-uploader {
+  width: 100%;
+  height: 100%;
+  .item {
+    overflow: hidden;
+    cursor: default;
+  }
+  input[type=file] {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    right: -30px;
+    bottom: -30px;
+  }
+  .menu {
+    margin: 0;
+  }
+}
+
+#files-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 363px;
+  margin: 0;
+  padding: 0;
+}

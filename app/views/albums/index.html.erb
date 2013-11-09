@@ -1,6 +1,6 @@
 <div id="album-js"></div>
 
-<div class="tile middle square ui grid album">
+<div class="tile middle square ui grid albums">
   <div class="three wide column pane">
     <div class="square pie black list">
       <ul id="shopmenu">
@@ -16,9 +16,9 @@
       <% @albums.each do |album| %>
           <div class="column">
             <div class="square center cover">
-              <%= image_tag album.cover.url %>
+              <%= link_to image_tag(album.cover.url), album_path(album) %>
             </div>
-            <p class="square sku center"><%= album.sku %></p>
+            <p class="square sku center"><%= link_to album.sku, album_path(album), class: 'square text grey bold' %></p>
           </div>
       <% end %>
     </div>

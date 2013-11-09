@@ -1,4 +1,4 @@
-.square.album {
+.square.albums {
   .square.pie {
     margin-left: 0;
   }
@@ -47,6 +47,12 @@
   p.sku {
     margin-top: 0.5em;
     font-size: 0.8em;
+    a {
+      color: #999;
+      font-weight: bolder;
+      font-size: 12px;
+      text-decoration: none;
+    }
   }
   .cover {
     height: 140px;

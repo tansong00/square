@@ -9,6 +9,10 @@
   padding: 35px 20px 20px 20px;
   margin-top: 20px;
   margin-left: 20px;
+  &.nomargin {
+    margin-top: 0;
+    margin-left: 0;
+  }
   &.list {
     padding-left: 0;
     li {

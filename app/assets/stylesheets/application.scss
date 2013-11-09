@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require ./lib/nprogress
+ *= require ./lib/perfect-scrollbar-0.4.5.min
  *= require_tree .
  */
 
@@ -54,3 +55,13 @@ html, body {
   }
 }
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+
+.square.txt {
+  font-size: 12px;
+  &.grey {
+    color: #999;
+  }
+  &.blod {
+    font-weight: bolder;
+  }
+}

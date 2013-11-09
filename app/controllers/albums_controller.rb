@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :set_album, only: %i{edit update show}
+
   def index
     @albums = Album.page params[:page]
   end
@@ -17,7 +19,6 @@ class AlbumsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -25,11 +26,15 @@ class AlbumsController < ApplicationController
   end
 
   def show
-
+    @pictures = @album.pictures
   end
 
   private
   def album_params
     params.require(:album).permit(:title, :sku, :cover)
+  end
+
+  def set_album
+    @album = Album.find params[:id]
   end
 end

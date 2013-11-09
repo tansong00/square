@@ -5,13 +5,15 @@
         paneDiv = '<div class="square pie" style="position:fixed;z-index:11111;top:0;min-width:300px;margin:0;word-break:break-all;min-height:0;padding:0;left:50%;display:none;max-width:50%;"></div>',
         closeDiv = '<div><img style="position:absolute;bottom:10px;right:10px;cursor:pointer;" src="' + closeIcon + '"/></div>',
         maskDiv = '<div style="position: fixed;_position: absolute;width: 100%;height: 100%;_height: 100000px;top: 0px;left: 0px;z-index: 10100;background: #000;filter: alpha(opacity=80);opacity: 0.8;"></div>',
-        $pane, $mask, animating = false;
+        $pane, $mask, animating = false, $this;
 
     $.fn.$pop = function() {
-        if ($pane != null) return;
-        initPane($(this).clone());
+        $this = $(this);
+        if ($pane != null) return $this;
+        initPane($this.clone(true, true));
         $(closeDiv).appendTo($pane).css({height: '35px', width: '100%'}).find('img').bind('click', popOut);
         popIn();
+        return $this;
     };
 
     function initPane(content) {
@@ -28,6 +30,7 @@
         $pane.animate({marginTop: 0}, 'fast', function() {
             animating = false;
         });
+        $this.trigger('shown');
     }
 
     function popOut() {
@@ -40,16 +43,9 @@
                 $pane = $mask = null;
                 animating = false;
             });
+            $this.trigger('hidden');
+            $this = null;
         }
     }
 
 }(jQuery));
-
-function pop() {
-   $('.square.sku').bind('click', function() {
-       $('<p class="square center">你需要登录</p>').$pop();
-   });
-}
-
-$(document).ready(pop);
-$(document).on('page:load', pop);

@@ -5,6 +5,14 @@ GIT
     semantic-ui-sass (0.8.6.0)
       sass (~> 3.2)
 
+GIT
+  remote: https://github.com/tors/jquery-fileupload-rails.git
+  revision: 0ff3c5b7b97d4a11a65d70b81f32b42d92c185e2
+  specs:
+    jquery-fileupload-rails (0.4.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -143,6 +151,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
+  jquery-fileupload-rails!
   jquery-rails
   kaminari
   mime-types

@@ -58,3 +58,5 @@ gem 'mini_magick'
 gem 'mime-types'
 
 gem 'kaminari'
+
+gem 'jquery-fileupload-rails', :git => 'https://github.com/tors/jquery-fileupload-rails.git'

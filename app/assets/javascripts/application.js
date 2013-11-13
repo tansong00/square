@@ -16,7 +16,7 @@
 //= require semantic-ui
 //= require ./lib/nprogress
 //= require ./lib/perfect-scrollbar-0.4.5.with-mousewheel.min
-//= require ./upload
+//= require jquery-fileupload
 //= require_tree .
 
 $(document).on('page:fetch',   function() { NProgress.start(); });

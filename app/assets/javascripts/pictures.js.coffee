@@ -20,8 +20,8 @@ picture = ->
         form.serializeArray()
 
     $('#bupload').bind 'click', ->
-      $('#pic-uploader').slideToggle();
-      $('#pic-gallery').slideToggle();
+      $('#pic-uploader').toggle()
+      $('#pic-gallery-wrap').slideToggle()
 
 $(document).ready(picture);
 $(document).on('page:load', picture);

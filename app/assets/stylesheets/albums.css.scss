@@ -54,12 +54,13 @@
       text-decoration: none;
     }
   }
-  .cover {
-    height: 140px;
-    width: 140px;
-    display: table-cell;
-    vertical-align: middle;
-  }
+}
+
+.square.cover {
+  height: 140px;
+  width: 140px;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .square.center {

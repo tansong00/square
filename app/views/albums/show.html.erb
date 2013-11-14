@@ -1,16 +1,18 @@
 <div id="picture-js"></div>
 
-<div class="ui grid pictures">
+<div class="square ui grid pictures">
   <div class="fifteen wide column">
-    <div class="square pie nomargin" id="pic-pane">
-      <div id="pic-gallery" class="ui grid stackable five column">
-        <% @pictures.each do |pic| %>
-            <div class="column">
-              <div class="square center cover">
-                <%= link_to image_tag(pic.file.url(:thumb)), '#' %>
+    <div class="square pie nomargin clearfix" id="pic-pane">
+      <div id="pic-gallery-wrap" class="clearfix">
+        <div id="pic-gallery" class="ui grid stackable five column clearfix">
+          <% @pictures.each do |pic| %>
+              <div class="column">
+                <div class="square center cover center">
+                  <%= link_to image_tag(pic.file.url(:thumb)), '#' %>
+                </div>
               </div>
-            </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
       <div id="pic-uploader" style="display: none">
         <%= form_tag '#', id: 'fileupload', multipart: true, data: {url: upload_pictures_path} do %>
@@ -18,7 +20,7 @@
             <div class="ui fluid three item menu fileupload-buttonbar">
                 <span class="item fileinput-button" style="overflow: hidden;">
                     <i class="icon upload"></i>添加文件
-                    <input type="file" name="files[]" multiple="">
+                    <input type="file" name="files[]" multiple="" accept="image/png, image/gif, image/jpg, image/jpeg">
                 </span>
                 <span class="item start"><i class="icon checkmark"></i>开始上传</span>
                 <span class="item cancel"><i class="icon ban circle"></i>停止上传</span>
@@ -37,7 +39,10 @@
       </div>
     </div>
   </div>
+</div>
 
+<div class="square pictures content-wrap">
+    <%= render 'content' %>
 </div>
 
 <script id="template-upload" type="text/x-tmpl">
@@ -45,7 +50,7 @@
   <div class="item template-upload">
     <div class="ui grid">
       <div class="one wide column">
-        <div class="ui avatar image"></div>
+        <div class="ui avatar image preview"></div>
       </div>
       <div class="nine wide column">
         <div class="content">
@@ -69,7 +74,7 @@
   <div class="item template-download">
     <div class="ui grid">
       <div class="one wide column">
-        <div class="ui avatar image"></div>
+        <div class="ui avatar image preview"></div>
       </div>
       <div class="nine wide column">
         <div class="content">

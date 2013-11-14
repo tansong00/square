@@ -1,4 +1,7 @@
-.pictures {
+.square.pictures {
+  .cover {
+    padding: 20px 0;
+  }
 }
 #pic-pane {
   width: 100%;
@@ -7,10 +10,15 @@
   overflow: hidden;
 }
 
-#pic-gallery {
+#pic-gallery-wrap {
   width: 100%;
   height: 100%;
   margin: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#pic-gallery {
+  margin: 30px;
 }
 
 #pic-uploader {

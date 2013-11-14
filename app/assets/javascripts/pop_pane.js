@@ -21,6 +21,15 @@
         }
     };
 
+    $.$pop = function(text, action) {
+        if (action == null) {
+            $('<p style="text-align: center;">' + text + '</p>').$pop();
+        }
+        else if (action === 'out') {
+            popOut();
+        }
+    };
+
     function initPane(content) {
         $pane = $(paneDiv);
         $pane.html(content);

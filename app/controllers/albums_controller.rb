@@ -27,6 +27,8 @@ class AlbumsController < ApplicationController
 
   def show
     @pictures = @album.pictures
+    @comments = @album.comments.lasts.page params[:page]
+    @new_comment = @album.comments.build
   end
 
   private

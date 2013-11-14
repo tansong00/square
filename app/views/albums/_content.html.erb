@@ -1,5 +1,53 @@
-<div class="ui grid">
-  <div class="fifteen wide column content">
+<div class="ui grid stackable">
+  <div class="twelve wide column content">
+     <div class="square comments clearfix" id="comments">
 
+       <% @comments.each do |comment| %>
+           <div class="comment clearfix">
+             <div class="arrow1"></div>
+             <div class="arrow2" style="border-right-color:#424351;"></div>
+             <div class="replyicon">
+               <div class="boardiconbox pie">
+                 <div  style="background-color:#424351;height: 64px;width: 64px;"></div>
+               </div>
+               <div class="username">测试</div>
+             </div>
+             <div class="replyvalueout">
+               <div class="replyvalue pie" style="background-color:#424351"><%= comment.content %></div>
+             </div>
+           </div>
+       <% end %>
+
+       <div class="comment">
+         <%= form_for @new_comment do |f| %>
+             <%= hidden_field_tag :id, @album.id %>
+             <%= hidden_field_tag :type, 'album' %>
+
+             <div class="ui form">
+               <div class="field">
+                 <label>写下你的留言</label>
+                 <%= f.text_area :content %>
+               </div>
+               <%= f.submit '提交', class: 'ui submit button small black' %>
+             </div>
+         <% end %>
+       </div>
+     </div>
+  </div>
+  <div class="four column wide">
+    <div class="ui vertical menu">
+      <a class="active item">
+        <i class="flickr icon"></i> 留言&讨论
+      </a>
+
+      <div class="ui dropdown item">
+        More <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item"><i class="edit icon"></i> Edit Profile</a>
+          <a class="item"><i class="globe icon"></i> Choose Language</a>
+          <a class="item"><i class="settings icon"></i> Account Settings</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

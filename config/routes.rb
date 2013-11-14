@@ -2,6 +2,7 @@ Square::Application.routes.draw do
   root 'dashboards#index'
 
   resources :albums
+  resources :comments, only: [:create]
   resources :pictures do
     collection do
       post :upload

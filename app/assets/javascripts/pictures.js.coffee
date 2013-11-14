@@ -23,5 +23,11 @@ picture = ->
       $('#pic-uploader').toggle()
       $('#pic-gallery-wrap').slideToggle()
 
+    $('#bedit').bind 'click', ->
+      _$this = $(@)
+      $.get _$this.data('url'), (resp) ->
+        $(resp).$pop()
+
+
 $(document).ready(picture);
 $(document).on('page:load', picture);

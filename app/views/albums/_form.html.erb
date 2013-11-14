@@ -1,0 +1,37 @@
+<div class="ui grid">
+  <div class="three wide column"></div>
+  <div class="ten wide column">
+    <div class="ui form">
+      <div class="field">
+        <%= f.label :title %>
+        <div class="ui icon input">
+          <i class="code icon"></i>
+          <%= f.text_field :title %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :sku %>
+        <div class="ui icon input">
+          <i class="url icon"></i>
+          <%= f.text_field :sku %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :cover %>
+        <div class="ui icon input">
+          <i class="file icon"></i>
+          <%= f.file_field :cover %>
+        </div>
+      </div>
+
+      <div class="ui grid">
+        <div class="twelve wide column"></div>
+        <div class="four wide column">
+          <%= f.submit '提交', disable_with: '...', class: 'ui black fluid button' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

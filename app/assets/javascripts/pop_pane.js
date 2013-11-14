@@ -7,13 +7,18 @@
         maskDiv = '<div style="position: fixed;_position: absolute;width: 100%;height: 100%;_height: 100000px;top: 0px;left: 0px;z-index: 10100;background: #000;filter: alpha(opacity=80);opacity: 0.8;"></div>',
         $pane, $mask, animating = false, $this;
 
-    $.fn.$pop = function() {
-        $this = $(this);
-        if ($pane != null) return $this;
-        initPane($this.clone(true, true));
-        $(closeDiv).appendTo($pane).css({height: '35px', width: '100%'}).find('img').bind('click', popOut);
-        popIn();
-        return $this;
+    $.fn.$pop = function(action) {
+        if (action == null) {
+            $this = $(this);
+            if ($pane != null) return $this;
+            initPane($this.clone(true, true));
+            $(closeDiv).appendTo($pane).css({height: '35px', width: '100%'}).find('img').bind('click', popOut);
+            popIn();
+            return $this;
+        }
+        else if (action === 'out') {
+            popOut();
+        }
     };
 
     function initPane(content) {

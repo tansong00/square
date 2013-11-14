@@ -19,10 +19,14 @@ class AlbumsController < ApplicationController
   end
 
   def edit
+    render layout: false
   end
 
   def update
+    if @album.update_attributes album_params
 
+    end
+    redirect_to album_url(@album)
   end
 
   def show

@@ -15,6 +15,22 @@
       margin-top: 60px;
     }
   }
+  .subtitle {
+    width: 250px;
+    margin: 25px auto 25px auto;
+    background: #bbb;
+    color: #fff;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    -moz-box-shadow: 0px 0px 3px #666;
+    -webkit-box-shadow: 0px 0px 3px #666;
+    box-shadow: 0px 0px 3px #666;
+  }
   .boardiconbox {
     width: 64px;
     height: 64px;

@@ -6,14 +6,14 @@
       <div id="pic-gallery" class="ui grid stackable five column clearfix">
         <% @pictures.each do |pic| %>
             <div class="column">
-              <div class="square center cover center">
-                <%= link_to image_tag(pic.file.url(:thumb)), '#' %>
+              <div class="square center cover" data-url="<%= picture_path(pic) %>">
+                <%= link_to image_tag(pic.file.url(:thumb)), 'javascript:void(0);' %>
               </div>
             </div>
         <% end %>
       </div>
     </div>
-    <div id="pic-uploader" style="display: none">
+    <div id="pic-uploader">
       <%= form_tag '#', id: 'fileupload', multipart: true, data: {url: upload_pictures_path} do %>
           <%= hidden_field_tag :album_id, @album.id %>
           <div class="ui fluid three item menu fileupload-buttonbar">
@@ -36,6 +36,9 @@
   </a>
   <a class="active item" id="bedit" data-url="<%= edit_album_path(@album) %>">
     <i class="edit icon"></i> 编辑
+  </a>
+  <a class="active item" id="bremove">
+    <i class="remove circle icon"></i> 删除图片
   </a>
 </div>
 

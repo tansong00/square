@@ -6,4 +6,11 @@ class PicturesController < ApplicationController
     @album.update_attribute(:cover, @picture.file) if @album.cover.blank?
     render json: {files: [@picture.to_jq_upload]}, status: :created
   end
+
+
+  def destroy
+    @picture = Picture.find params[:id]
+    @picture.destroy
+    render json: {msg: 'ok'}
+  end
 end

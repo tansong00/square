@@ -20,7 +20,6 @@ picture = ->
         form.serializeArray()
 
     $('#bupload').bind 'click', ->
-      $('#pic-uploader').toggle()
       $('#pic-gallery-wrap').slideToggle()
 
     $('#bedit').bind 'click', ->
@@ -28,6 +27,32 @@ picture = ->
       $.get _$this.data('url'), (resp) ->
         $(resp).$pop()
 
+    $('#bremove').bind 'click', (e) ->
+      e.preventDefault()
+      _$cover = $('.cover')
+      if _$cover.transition('is looping')[0]
+        _$cover.transition('remove looping')
+        _$cover.removeClass().addClass('square center cover')
+      else
+        _$cover
+        .transition('set looping')
+        .transition('bounce', '2000ms')
+
+    $('#pic-gallery').on 'click', '.cover.looping', (e) ->
+      _$cover = $(@)
+      $("""
+        <p class="square center">是否删除？</p>
+        <p class="square center">
+          <span class="cancel square button small w">取消</span>
+          <span class="ok square button small">确定</span>
+        </p>""")
+      .$pop()
+      .on 'click', '.ok', ->
+          $.post _$cover.data('url'), {_method: 'delete'}, (resp) ->
+            $.$pop(null, 'out')
+            _$cover.closest('.column').remove()
+      .on 'click', '.cancel', ->
+          $.$pop(null, 'out')
 
 $(document).ready(picture);
 $(document).on('page:load', picture);

@@ -9,9 +9,9 @@
 
     $.fn.$pop = function(action) {
         if (action == null) {
-            $this = $(this);
+            $this = $(this).clone(true, true);
             if ($pane != null) return $this;
-            initPane($this.clone(true, true));
+            initPane($this);
             $(closeDiv).appendTo($pane).css({height: '35px', width: '100%'}).find('img').bind('click', popOut);
             popIn();
             return $this;

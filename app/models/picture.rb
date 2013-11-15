@@ -21,9 +21,14 @@ class Picture < ActiveRecord::Base
   end
 
   before_save :save_attr
+  after_destroy :delete_file
 
   private
   def save_attr
     self.file_name = file.file.original_filename
+  end
+
+  def delete_file
+    remove_file!
   end
 end

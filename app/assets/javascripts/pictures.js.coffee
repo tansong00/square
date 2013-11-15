@@ -51,8 +51,6 @@ picture = ->
           $.post _$cover.data('url'), {_method: 'delete'}, (resp) ->
             $.$pop(null, 'out')
             _$cover.closest('.column').remove()
-      .on 'click', '.cancel', ->
-          $.$pop(null, 'out')
 
 $(document).ready(picture);
 $(document).on('page:load', picture);

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114080533) do
+ActiveRecord::Schema.define(version: 20131115081610) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
@@ -39,6 +39,25 @@ ActiveRecord::Schema.define(version: 20131114080533) do
     t.string   "path"
     t.string   "file"
     t.boolean  "file_processing"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "task_albums", force: true do |t|
+    t.integer  "task_id"
+    t.integer  "album_id"
+    t.text     "pic_ids"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.string   "title"
+    t.integer  "for_id"
+    t.integer  "creator_id"
+    t.datetime "closed_at"
+    t.datetime "published_at"
+    t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

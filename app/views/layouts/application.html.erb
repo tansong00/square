@@ -12,18 +12,31 @@
     <div class="container">
       <%= link_to '首页', root_path, class: 'item' %>
       <%= link_to '相册', albums_path, class: 'item' %>
-      <div class="item">aa</div>
+      <a id="4taskbar" class="item" href="javascript:void(0);">新任务</a>
     </div>
 </div>
 
 <div class="segment">
   <div class="container tile large">
-
   </div>
 </div>
 
 <div class="container">
   <%= yield %>
+</div>
+
+<div id="taskbar" class="ui wide styled sidebar active">
+  <h3 class="ui header">任务清单</h3>
+  <div class="ui fluid vertical menu">
+    <a class="item" id="4task-page">
+      <i class="chat outline icon"></i>
+      添加当前页
+    </a>
+    <a class="item" id="4task-sku">
+      <i class="text file icon"></i>
+      添加对应 SKU 的相册
+    </a>
+  </div>
 </div>
 
 </body>

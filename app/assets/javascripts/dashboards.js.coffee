@@ -1,6 +1,3 @@
-dropdown = ->
-  $('.ui.dropdown').bind 'click', ->
+$ ->
+  $(document).on 'click', '.ui.dropdown', ->
     $(@).dropdown('toggle')
-
-$(document).ready(dropdown);
-$(document).on('page:load', dropdown);

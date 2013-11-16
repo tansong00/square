@@ -62,3 +62,5 @@ gem 'kaminari'
 gem 'jquery-fileupload-rails', :git => 'https://github.com/tors/jquery-fileupload-rails.git'
 
 gem 'puma', '~> 2.6'
+
+gem 'sorcery'

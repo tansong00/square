@@ -12,7 +12,11 @@
     <div class="container">
       <%= link_to '首页', root_path, class: 'item' %>
       <%= link_to '相册', albums_path, class: 'item' %>
-      <a id="4taskbar" class="item" href="javascript:void(0);">任务</a>
+      <a id="for_taskbar" class="item" href="javascript:void(0);">任务</a>
+
+      <div class="menu right">
+        <a href="javascript:void(0);" id="for_login" class="item" style="border-radius: 100px;"><span class="login c t">登录</span></a>
+      </div>
     </div>
 </div>
 
@@ -28,11 +32,11 @@
 <div id="taskbar" class="ui wide styled sidebar">
   <h3 class="ui header">任务清单</h3>
   <div class="ui fluid vertical menu">
-    <a class="item" id="4task-page" data-url="<%= tasks_path %>">
+    <a class="item" id="for_task-page" data-url="<%= tasks_path %>">
       <i class="chat outline icon"></i>
       添加当前页
     </a>
-    <a class="item" id="4task-sku" data-url="<%= tasks_path %>">
+    <a class="item" id="for_task-sku" data-url="<%= tasks_path %>">
       <i class="text file icon"></i>
       添加对应 SKU 的相册
     </a>

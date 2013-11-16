@@ -1,15 +1,15 @@
 $ ->
-  $(document).on 'click', '#4taskbar', ->
+  $(document).on 'click', '#for_taskbar', ->
     $('#taskbar').sidebar('toggle')
 
-  $(document).on 'click', '#4task-page', ->
+  $(document).on 'click', '#for_task-page', ->
     if (_$dom = $('#picture-js')).length > 0
       $.post $(@).data('url'), id: _$dom.data('id'), (resp) ->
         $('#taskalbum-container').append(resp)
     else
       $.$pop('请在相册页面中使用该功能~')
 
-  $(document).on 'click', '#4task-sku', ->
+  $(document).on 'click', '#for_task-sku', ->
     _$pane = $("""
              <div class="ui large form" style="width: 400px; padding: 30px 60px;">
                <div class="field">

@@ -11,6 +11,10 @@
     padding: 5px 12px;
     font-size: 0.9em;
   }
+  &.middle {
+    padding: 6px 18px;
+    font-size: 1em;
+  }
   &.large {
     padding: 8px 21px;
     font-size: 1.2em;
@@ -25,7 +29,9 @@ button.square.button, input.square.button {
   outline: none;
   border: 0;
 }
-
+a.square.button {
+  text-decoration: none;
+}
 
 .square.search {
   $margin_left: 20px;

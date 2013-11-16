@@ -10,24 +10,17 @@
   vv = Math.pow(10,v)
   Math.round(num*vv)/vv
 
-picture = ->
+$ ->
   if $('#picture-js').length
-    $('#files-container').perfectScrollbar(wheelSpeed: 25)
-
-    $('#fileupload').fileupload
-      sequentialUploads: true
-      formData: (form) ->
-        form.serializeArray()
-
-    $('#bupload').bind 'click', ->
+    $(document).on 'click', '#bupload', ->
       $('#pic-gallery-wrap').slideToggle()
 
-    $('#bedit').bind 'click', ->
+    $(document).on 'click', '#bedit', ->
       _$this = $(@)
       $.get _$this.data('url'), (resp) ->
         $(resp).$pop()
 
-    $('#bremove').bind 'click', (e) ->
+    $(document).on 'click', '#bremove', (e) ->
       e.preventDefault()
       _$cover = $('.cover')
       if _$cover.transition('is looping')[0]
@@ -38,19 +31,28 @@ picture = ->
         .transition('set looping')
         .transition('bounce', '2000ms')
 
-    $('#pic-gallery').on 'click', '.cover.looping', (e) ->
+    $(document).on 'click', '.cover.looping', ->
       _$cover = $(@)
       $("""
         <p class="square center">是否删除？</p>
         <p class="square center">
-          <span class="cancel square button small w">取消</span>
-          <span class="ok square button small">确定</span>
+        <span class="cancel square button small w">取消</span>
+        <span class="ok square button small">确定</span>
         </p>""")
       .$pop()
       .on 'click', '.ok', ->
           $.post _$cover.data('url'), {_method: 'delete'}, (resp) ->
             $.$pop(null, 'out')
             _$cover.closest('.column').remove()
+
+picture = ->
+  if $('#picture-js').length
+    $('#files-container').perfectScrollbar(wheelSpeed: 25)
+
+    $('#fileupload').fileupload
+      sequentialUploads: true
+      formData: (form) ->
+        form.serializeArray()
 
 $(document).ready(picture);
 $(document).on('page:load', picture);

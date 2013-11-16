@@ -1,0 +1,12 @@
+<div class="item" id="task-album-in-<%= @album.id %>">
+  <div class="image">
+    <%= image_tag @album.cover.url %>
+    <a class="star ui corner label">
+      <i class="star icon"></i>
+    </a>
+  </div>
+  <div class="content">
+    <div class="name"><%= @album.sku %></div>
+    <p class="description"><%= @album.title %></p>
+  </div>
+</div>

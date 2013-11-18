@@ -1,6 +1,9 @@
 $ ->
   $(document).on 'click', '#for_taskbar', ->
-    $('#taskbar').sidebar('toggle')
+    if logged_in
+      $('#taskbar').sidebar('toggle')
+    else
+      $('#for_login').trigger('click')
 
   $(document).on 'click', '#for_task-page', ->
     if (_$dom = $('#picture-js')).length > 0

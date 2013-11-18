@@ -13,7 +13,7 @@
                <div class="boardiconbox pie">
                  <div  style="background-color:#424351;height: 64px;width: 64px;"></div>
                </div>
-               <div class="username">测试</div>
+               <div class="username"><%= comment.user.try(:username) || 'No name' %></div>
              </div>
              <div class="replyvalueout">
                <div class="replyvalue pie" style="background-color:#424351"><%= comment.content %></div>
@@ -31,7 +31,7 @@
                  <label>写下你的留言</label>
                  <%= f.text_area :content %>
                </div>
-               <%= f.submit '提 交', disable_with: '...', class: 'square button large' %>
+               <%= f.submit '提 交', class: 'square button large' %>
              </div>
          <% end %>
        </div>

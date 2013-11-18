@@ -5,6 +5,10 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_tag do %>
+    var logged_in = <%= logged_in? %>;
+    var login_name = '<%= current_user.try(:username) %>';
+  <% end %>
 </head>
 <body>
 

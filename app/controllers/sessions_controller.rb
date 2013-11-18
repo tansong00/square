@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :root_if_logged, only: [:new, :create]
 
   def new
     render layout: false
@@ -16,5 +17,11 @@ class SessionsController < ApplicationController
   def destroy
     logout
     redirect_to root_url
+  end
+
+
+  private
+  def root_if_logged
+    redirect_to root_url if logged_in?
   end
 end

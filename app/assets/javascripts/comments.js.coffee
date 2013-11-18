@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $(document).on 'submit', '#new_comment', (e) ->
+    unless logged_in
+      $('#btn4login').trigger('click')
+      return e.preventDefault()
+

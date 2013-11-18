@@ -1,3 +1,8 @@
+<%= javascript_tag do %>
+  logged_in = <%= logged_in? %>;
+  login_name = '<%= current_user.username %>';
+<% end %>
+
 <div class="ui fixed transparent inverted main menu square" id="main-topbar">
   <div class="container">
     <%= link_to '首页', root_path, class: 'item' %>
@@ -5,9 +10,7 @@
     <a id="for_taskbar" class="item" href="javascript:void(0);">任务</a>
 
     <div class="menu right">
-      <a href="javascript:void(0);" id="for_login2" class="item" style="border-radius: 100px;">
-        <img src="/images/cat.png" alt="" class="login c i" />
-      </a>
+      <%= link_to image_tag('/images/cat.png', class: 'login c i'), logout_path, method: :delete, class: 'item', id: 'for_login2', style: 'border-radius: 100px;' %>
     </div>
   </div>
 </div>

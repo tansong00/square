@@ -5,14 +5,16 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = login(params[:email], params[:password], params[:remember_me])
+    user = login(params[:username], params[:password], params[:remember_me])
     if user
+      render layout: false
     else
-      render json: {msg: 'Username or password was invalid'}
+      render json: {msg: 'Username or password was invalid'}, status: 400
     end
   end
 
   def destroy
     logout
+    redirect_to root_url
   end
 end

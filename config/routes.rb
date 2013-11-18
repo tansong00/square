@@ -1,6 +1,8 @@
 Square::Application.routes.draw do
   root 'dashboards#index'
 
+  delete 'logout' => 'sessions#destroy', as: :logout
+
   resources :albums
   resources :comments, only: [:create]
   resources :pictures do

@@ -16,7 +16,7 @@
     <div class="container">
       <%= link_to '首页', root_path, class: 'item' %>
       <%= link_to '相册', albums_path, class: 'item' %>
-      <a id="for_taskbar" class="item" href="javascript:void(0);">任务</a>
+      <%= link_to '任务', 'javascript:void(0);', id: 'for_taskbar', class: 'item' %>
 
       <div class="menu right">
           <% if logged_in? %>
@@ -38,23 +38,6 @@
 
 <div class="container">
   <%= yield %>
-</div>
-
-<div id="taskbar" class="ui wide styled sidebar">
-  <h3 class="ui header">任务清单</h3>
-  <div class="ui fluid vertical menu">
-    <a class="item" id="for_task-page" data-url="<%= tasks_path %>">
-      <i class="chat outline icon"></i>
-      添加当前页
-    </a>
-    <a class="item" id="for_task-sku" data-url="<%= tasks_path %>">
-      <i class="text file icon"></i>
-      添加对应 SKU 的相册
-    </a>
-  </div>
-  <div class="ui two items" id="taskalbum-container">
-
-  </div>
 </div>
 
 </body>

@@ -10,7 +10,15 @@ Square::Application.routes.draw do
       post :upload
     end
   end
-  resources :tasks
+  resources :tasks do
+    collection do
+      get :tmp
+      delete :remove_album
+    end
+    member do
+      match :publish, via: [:get, :patch]
+    end
+  end
   resources :sessions, only: [:new, :create]
   resources :users
 

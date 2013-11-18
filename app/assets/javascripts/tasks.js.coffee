@@ -1,14 +1,19 @@
 $ ->
   $(document).on 'click', '#for_taskbar', ->
     if logged_in
-      $('#taskbar').sidebar('toggle')
+      if $('#taskbar').length is 0
+        $.get '/tasks/tmp', (resp) ->
+          $(resp).appendTo('body').sidebar('show')
+      else
+        $('#taskbar').sidebar('toggle')
     else
       $('#for_login').trigger('click')
 
   $(document).on 'click', '#for_task-page', ->
     if (_$dom = $('#picture-js')).length > 0
-      $.post $(@).data('url'), id: _$dom.data('id'), (resp) ->
-        $('#taskalbum-container').append(resp)
+      $.post('/tasks', id: _$dom.data('id'))
+      .done((resp) -> $('#taskalbum-container').append(resp))
+      .fail((resp) -> $.$pop(resp.responseText))
     else
       $.$pop('请在相册页面中使用该功能~')
 
@@ -29,5 +34,29 @@ $ ->
     _$pane.on 'ok', =>
       sku = _$pane.find('#sku4task').val()
       unless /^\s*$/.test sku
-        $.post $(@).data('url'), sku: sku, (resp) ->
-          $('#taskalbum-container').append(resp)
+        $.post('/tasks', sku: sku)
+        .done((resp) -> $('#taskalbum-container').append(resp))
+        .fail((resp) -> setTimeout (-> $.$pop(resp.responseText)), 800)
+
+
+  $(document).on 'click', '.remove_album', (e) ->
+    _$this = $(@)
+    $.post('/tasks/remove_album', {task_id: _$this.data('tid'), album_id: _$this.data('aid'), _method: 'delete'})
+    .done (resp) ->
+      $("#task-#{resp.tid}-album-#{resp.aid}").remove()
+    .fail (resp) ->
+      $.$pop(resp.responseText)
+
+  $(document).on 'click', '#pub_task', (e) ->
+    url = $(@).data('url')
+    $.get(url)
+    .done (resp) ->
+        _$pane = $(resp).$pop()
+        .on 'ok', ->
+            $.post(url, _$pane.find('form').serialize())
+            .done (resp) ->
+                setTimeout (-> $.$pop(resp)), 800
+                $('#for_taskbar').remove()
+            .fail (resp) ->
+                setTimeout (-> $.$pop(resp.responseText)), 800
+    .fail((resp) -> $.$pop(resp) )

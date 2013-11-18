@@ -49,6 +49,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.1.4)
+    callsite (0.0.11)
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -84,6 +85,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_request (0.2.7)
+      callsite
+      rack-contrib
+      railties
     method_source (0.8.1)
     mime-types (1.25)
     mini_magick (3.6.0)
@@ -106,6 +111,8 @@ GEM
     puma (2.6.0)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0)
@@ -174,6 +181,7 @@ DEPENDENCIES
   jquery-fileupload-rails!
   jquery-rails
   kaminari
+  meta_request
   mime-types
   mini_magick
   pry

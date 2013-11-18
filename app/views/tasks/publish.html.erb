@@ -1,0 +1,16 @@
+<div class="ui large form" style="width: 400px; padding: 30px 60px;">
+  <%= form_for @task do |f| %>
+      <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <%= f.label :for_id %>
+        <%= f.select :for_id, options_from_collection_for_select(User.all, :id, :username), {}, class: 'ui selection dropdown', style: 'width: 100%;' %>
+      </div>
+      <p class="square center">
+        <span class="square button small cancel w">取消</span>
+        <button class="square button small ok">确认</button>
+      </p>
+  <% end %>
+</div>

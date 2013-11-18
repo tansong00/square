@@ -49,6 +49,7 @@ group :development do
   gem 'better_errors'
   gem 'pry'
   gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'

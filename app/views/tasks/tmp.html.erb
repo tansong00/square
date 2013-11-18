@@ -1,0 +1,24 @@
+<div id="taskbar" class="ui wide styled sidebar">
+  <h3 class="ui header">任务清单</h3>
+  <div class="ui fluid vertical menu">
+    <a class="item" id="for_task-page">
+      <i class="text file icon"></i>
+      添加当前页
+    </a>
+    <a class="item" id="for_task-sku">
+      <i class="icon search"></i>
+      添加对应 SKU 的相册
+    </a>
+    <a class="item" href="javascript:void(0);" id="pub_task" data-url="<%= publish_task_path(@task) %>">
+      <i class="icon rss"></i>
+      发布任务
+    </a>
+  </div>
+  <div class="ui two items" id="taskalbum-container">
+    <% if @task.present? %>
+        <% @task.albums.each do |album| %>
+            <%= render 'tmp_task', album: album, task: @task %>
+        <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,6 +1,13 @@
 class TasksController < ApplicationController
   before_action :require_login
 
+  def show
+    @task = Task.find params[:id]
+    @albums = @task.albums
+    @comments = @task.comments.lasts
+    @new_comment = @task.comments.build
+  end
+
   def create
     if params[:sku].present?
       @album = Album.where(sku: params[:sku]).first

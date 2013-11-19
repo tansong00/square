@@ -55,8 +55,11 @@ $ ->
         .on 'ok', ->
             $.post(url, _$pane.find('form').serialize())
             .done (resp) ->
-                setTimeout (-> $.$pop(resp)), 800
-                $('#for_taskbar').remove()
+                setTimeout (->
+                  $.$pop(resp)
+                  $('#taskbar').remove()
+                ), 800
+                $('#taskbar').sidebar('hide')
             .fail (resp) ->
                 setTimeout (-> $.$pop(resp.responseText)), 800
     .fail((resp) -> $.$pop(resp) )

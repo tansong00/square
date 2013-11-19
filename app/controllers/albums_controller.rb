@@ -33,6 +33,7 @@ class AlbumsController < ApplicationController
     @pictures = @album.pictures
     @comments = @album.comments.lasts
     @new_comment = @album.comments.build
+    @tasks = @album.tasks.actives
   end
 
   private

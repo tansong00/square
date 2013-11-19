@@ -43,5 +43,17 @@
         <i class="flickr icon"></i> 留言&讨论
       </a>
     </div>
+
+    <div class="ui stacked segment">
+      <div class="ui statistic">
+        <div class="number"><%= @tasks.size %></div>
+        <div class="description">相关任务</div>
+      </div>
+      <div class="ui divided selection list square center">
+        <% @tasks.each do |task| %>
+           <%= link_to task.title, task_path(task), class: 'item' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

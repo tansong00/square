@@ -1,0 +1,66 @@
+<div class="ui stackable items">
+  <% @albums.each do |album| %>
+      <div class="item">
+        <div class="image">
+          <%= image_tag album.cover.url %>
+        </div>
+        <div class="content">
+          <div class="name"><%= album.sku %></div>
+          <p class="description"><%= album.title %></p>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+<div class="ui grid stackable">
+  <div class="twelve wide column content">
+    <div class="square comments clearfix" id="comments">
+
+      <% @comments.each do |comment| %>
+          <div class="subtitle">
+            <%= comment.created_at.strftime('%Y-%m-%d  %H:%M') %>
+          </div>
+          <div class="comment clearfix">
+            <div class="arrow1"></div>
+            <div class="arrow2" style="border-right-color:#424351;"></div>
+            <div class="replyicon">
+              <div class="boardiconbox pie">
+                <div  style="background-color:#424351;height: 64px;width: 64px;"></div>
+              </div>
+              <div class="username"><%= comment.user.try(:username) || 'No name' %></div>
+            </div>
+            <div class="replyvalueout">
+              <div class="replyvalue pie" style="background-color:#424351"><%= comment.content %></div>
+            </div>
+          </div>
+      <% end %>
+
+      <div class="comment">
+        <%= form_for @new_comment do |f| %>
+            <%= hidden_field_tag :id, @task.id %>
+            <%= hidden_field_tag :type, 'task' %>
+
+            <div class="ui form">
+              <div class="field">
+                <label>写下你的留言</label>
+                <%= f.text_area :content %>
+              </div>
+              <%= f.submit '提 交', class: 'square button large' %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="four column wide">
+    <div class="ui small feed segment">
+      <h4 class="ui header">相关附件</h4>
+      <div class="event">
+        <div class="content">
+          <div class="summary">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

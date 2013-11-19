@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116075032) do
+ActiveRecord::Schema.define(version: 20131119032341) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
     t.string   "sku"
     t.string   "cover"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "attachments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "attachmentable_id"
+    t.string   "attachmentable_type"
+    t.string   "file"
+    t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

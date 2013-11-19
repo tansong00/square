@@ -6,4 +6,5 @@ class Album < ActiveRecord::Base
   has_many :tasks, through: :task_albums
 
   has_many :comments, as: :commentable
+  has_many :attachments, as: :attachmentable
 end

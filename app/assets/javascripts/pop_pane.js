@@ -25,7 +25,7 @@
                 $pane.trigger('cancel');
                 popOut();
             });
-            $pane.on('click', '.ok', (isObject && action.ok) || function(e) {
+            $pane.on('click', '.ok:not(.redir)', (isObject && action.ok) || function(e) {
                 e.preventDefault();
                 $pane.trigger('ok');
                 popOut();

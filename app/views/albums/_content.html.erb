@@ -55,5 +55,19 @@
         <% end %>
       </div>
     </div>
+
+    <div class="ui stacked segment">
+      <div class="ui statistic">
+        <div class="number"><%= @attachments.size %></div>
+        <div class="description">相关附件</div>
+      </div>
+      <div class="ui divided selection list square center">
+        <% @attachments.each do |attach| %>
+            <%= link_to attach.file.file.filename, '#', class: 'item' %>
+        <% end %>
+        <%= link_to '上传附件', 'javascript:void(0);', class: 'item',
+                    id: 'for_newattach', data: {id: @album.id, type: 'album'} %>
+      </div>
+    </div>
   </div>
 </div>

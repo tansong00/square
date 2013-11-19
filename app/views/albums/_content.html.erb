@@ -61,12 +61,11 @@
         <div class="number"><%= @attachments.size %></div>
         <div class="description">相关附件</div>
       </div>
-      <div class="ui divided selection list square center">
+      <div class="ui divided selection list square center" data-no-turbolink>
         <% @attachments.each do |attach| %>
-            <%= link_to attach.file.file.filename, '#', class: 'item' %>
+            <%= link_to attach.file.file.filename, download_attachment_path(attach), class: 'item req_log' %>
         <% end %>
-        <%= link_to '上传附件', 'javascript:void(0);', class: 'item',
-                    id: 'for_newattach', data: {id: @album.id, type: 'album'} %>
+        <%= link_to '上传附件', new_attach_album_path(@album) , class: 'item req_log', id: 'for_newattach' %>
       </div>
     </div>
   </div>

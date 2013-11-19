@@ -3,7 +3,12 @@ Square::Application.routes.draw do
 
   delete 'logout' => 'sessions#destroy', as: :logout
 
-  resources :albums
+  resources :albums do
+    member do
+      get :new_attach
+      post :create_attach
+    end
+  end
   resources :comments, only: [:create]
   resources :pictures do
     collection do
@@ -17,11 +22,15 @@ Square::Application.routes.draw do
     end
     member do
       match :publish, via: [:get, :patch]
+      get :new_attach
+      post :create_attach
     end
   end
   resources :sessions, only: [:new, :create]
   resources :users
-  resources :attachments, only: [:new, :create, :destroy]
+  resources :attachments, only: [:destroy] do
+    get :download, on: :member
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

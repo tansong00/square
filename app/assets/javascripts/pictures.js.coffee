@@ -45,11 +45,6 @@ $ ->
             $.$pop(null, 'out')
             _$cover.closest('.column').remove()
 
-    $(document).on 'click', '#for_newattach', ->
-      _$this = $(@)
-      $.get '/attachments/new', {id: _$this.data('id'), type: _$this.data('type')}, (resp) ->
-        $(resp).$pop()
-
 
 picture = ->
   if $('#picture-js').length

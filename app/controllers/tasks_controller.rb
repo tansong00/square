@@ -5,6 +5,7 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
     @albums = @task.albums
     @comments = @task.comments.lasts
+    @attachments = @task.attachments
     @new_comment = @task.comments.build
   end
 
@@ -61,9 +62,30 @@ class TasksController < ApplicationController
     end
   end
 
+  def new_attach
+    @task = Task.find params[:id]
+    @attachment = Attachment.new
+    render layout: false
+  end
+
+  def create_attach
+    @task = Task.find params[:id]
+    @attachment = @task.attachments.build attach_params
+    @attachment.user = current_user
+    if @attachment.save
+      redirect_to @task
+    else
+      redirect_to @task
+    end
+  end
 
   private
   def tmp_task_params
     params.require(:task).permit(:for_id, :id, :title)
+  end
+
+
+  def attach_params
+    params.require(:attachment).permit(:file, :desc)
   end
 end

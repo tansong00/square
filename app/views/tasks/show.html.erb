@@ -53,13 +53,16 @@
   </div>
 
   <div class="four column wide">
-    <div class="ui small feed segment">
-      <h4 class="ui header">相关附件</h4>
-      <div class="event">
-        <div class="content">
-          <div class="summary">
-          </div>
-        </div>
+    <div class="ui stacked segment">
+      <div class="ui statistic">
+        <div class="number"><%= @attachments.size %></div>
+        <div class="description">相关附件</div>
+      </div>
+      <div class="ui divided selection list square center" data-no-turbolink>
+        <% @attachments.each do |attach| %>
+            <%= link_to attach.file.file.filename, download_attachment_path(attach), class: 'item req_log' %>
+        <% end %>
+        <%= link_to '上传附件', new_attach_task_path(@task) , class: 'item req_log', id: 'for_newattach' %>
       </div>
     </div>
   </div>

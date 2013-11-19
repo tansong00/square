@@ -1,7 +1,5 @@
 <div class="ui large form" style="width: 400px; padding: 30px 60px;">
-  <%= form_for @attachment, multipart: true do |f| %>
-      <%= hidden_field_tag :id, params[:id] %>
-      <%= hidden_field_tag :type, params[:type] %>
+  <%= form_for @attachment, url: create_attach_task_path(@task), multipart: true do |f| %>
 
       <div class="field">
         <%= f.label :file %>

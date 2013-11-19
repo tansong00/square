@@ -37,6 +37,23 @@ class AlbumsController < ApplicationController
     @attachments = @album.attachments
   end
 
+  def new_attach
+    @album = Album.find params[:id]
+    @attachment = Attachment.new
+    render layout: false
+  end
+
+  def create_attach
+    @album = Album.find params[:id]
+    @attachment = @album.attachments.build attach_params
+    @attachment.user = current_user
+    if @attachment.save
+      redirect_to @album
+    else
+      redirect_to @album
+    end
+  end
+
   private
   def album_params
     params.require(:album).permit(:title, :sku, :cover)
@@ -44,5 +61,9 @@ class AlbumsController < ApplicationController
 
   def set_album
     @album = Album.find params[:id]
+  end
+
+  def attach_params
+    params.require(:attachment).permit(:file, :desc)
   end
 end

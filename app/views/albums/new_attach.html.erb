@@ -1,0 +1,22 @@
+<div class="ui large form" style="width: 400px; padding: 30px 60px;">
+  <%= form_for @attachment, url: create_attach_album_path(@album), multipart: true do |f| %>
+
+      <div class="field">
+        <%= f.label :file %>
+        <div class="ui icon input">
+          <i class="file icon"></i>
+          <%= f.file_field :file %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :desc %>
+        <%= f.text_area :desc %>
+      </div>
+
+      <p class="square center">
+        <span class="square button small cancel w">取消</span>
+        <%= f.submit '提交', class: 'square button small ok redir' %>
+      </p>
+  <% end %>
+</div>

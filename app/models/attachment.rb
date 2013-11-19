@@ -2,6 +2,8 @@ class Attachment < ActiveRecord::Base
 
   mount_uploader :file, AttachmentUploader
 
+  scope :lasts, -> { order('id DESC') }
+
   validates :file, presence: true
 
   belongs_to :attachmentable, polymorphic: true

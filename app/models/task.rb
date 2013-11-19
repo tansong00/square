@@ -3,6 +3,8 @@ class Task < ActiveRecord::Base
   scope :tmp_task, -> { where(published_at: nil) }
   scope :actives, -> { where.not(published_at: nil) }
 
+  validates :title, presence: true
+
   has_many :task_albums, class_name: 'TaskAlbum', foreign_key: :task_id, dependent: :destroy
   has_many :albums, through: :task_albums
   has_many :comments, as: :commentable

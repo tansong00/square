@@ -35,7 +35,7 @@ a.square.button {
 
 .square.search {
   $margin_left: 20px;
-  & input {
+  & input[type=text] {
     float: left;
     padding: 0 0 0 10px;
     border: 0px;

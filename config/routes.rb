@@ -1,6 +1,8 @@
 Square::Application.routes.draw do
   root 'dashboards#index'
 
+  get 'search' => 'dashboards#search', as: :search
+
   delete 'logout' => 'sessions#destroy', as: :logout
 
   resources :albums do

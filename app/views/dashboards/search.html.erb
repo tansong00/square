@@ -1,0 +1,62 @@
+<div class="tile middle segment square search clearfix">
+  <%= form_tag search_path, method: :get do %>
+
+      <%= text_field_tag :kw, params[:kw], placeholder: '请输入要搜索的内容', class: 'square input search' %>
+
+      <div class="ui selection dropdown square search">
+        <%= hidden_field_tag :type, 'sku' %>
+        <div class="default text" data-value="male">SKU</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-value="sku">SKU</div>
+        </div>
+      </div>
+
+      <%= submit_tag '搜索', class: 'square search button' %>
+  <% end %>
+</div>
+
+<div class="clearfix">
+  <div class="square search list">
+    <section class="square pie list">
+      <div class="pie-title">搜索结果</div>
+      <ul>
+        <% @albums.each do |album| %>
+            <li class="ui grid item">
+              <div class="six wide column"><%= album.sku %></div>
+              <div class="six wide column"><%= album.title %></div>
+              <div class="four wide column square center"><%= link_to semantic_icon(:unhide), album_path(album), class: 'square link black' %></div>
+            </li>
+        <% end %>
+      </ul>
+    </section>
+  </div>
+
+  <div class="square search side-pies">
+    <section class="square search pie list">
+      <div class="pie-title">相关任务</div>
+      <ul>
+        <% @tasks.each do |task| %>
+            <li class="ui grid item">
+              <div class="column twelve wide"><%= task.title %></div>
+              <div class="four wide column square center"><%= link_to semantic_icon(:unhide), task_path(task), class: 'square link black' %></div>
+            </li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section class="square search pie list">
+      <div class="pie-title">相关附件</div>
+      <ul>
+        <% @attachments.each do |attach| %>
+            <li class="ui grid item">
+              <div class="column twelve wide"><%= attach.file.file.filename %></div>
+              <div class="four wide column square center" data-no-turbolink>
+                <%= link_to semantic_icon(:download), download_attachment_path(attach), class: 'req_log square link black' %>
+              </div>
+            </li>
+        <% end %>
+      </ul>
+    </section>
+  </div>
+</div>

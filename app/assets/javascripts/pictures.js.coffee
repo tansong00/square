@@ -24,7 +24,7 @@ $ ->
     _$cover = $('.cover')
     if _$cover.transition('is looping')[0]
       _$cover.transition('remove looping')
-      _$cover.removeClass().addClass('square center cover')
+      _$cover.removeClass().addClass('square center cover add_pic')
     else
       _$cover
       .transition('set looping')

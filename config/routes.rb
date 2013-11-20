@@ -26,6 +26,7 @@ Square::Application.routes.draw do
       match :publish, via: [:get, :patch]
       get :new_attach
       post :create_attach
+      patch :add_pic
     end
   end
   resources :sessions, only: [:new, :create]

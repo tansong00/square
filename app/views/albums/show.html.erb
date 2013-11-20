@@ -6,8 +6,8 @@
       <div id="pic-gallery" class="ui grid stackable five column clearfix">
         <% @pictures.each do |pic| %>
             <div class="column">
-              <div class="square center cover" data-url="<%= picture_path(pic) %>">
-                <%= link_to image_tag(pic.file.url(:thumb)), 'javascript:void(0);' %>
+              <div class="square center cover add_pic" data-url="<%= picture_path(pic) %>">
+                <%= link_to image_tag(pic.file.url(:thumb), data: {pid: pic.id}), 'javascript:void(0);' %>
               </div>
             </div>
         <% end %>

@@ -82,6 +82,28 @@ class TasksController < ApplicationController
     end
   end
 
+  def add_pic
+    begin
+      @task = Task.find params[:id]
+      @album = @task.albums.find params[:aid]
+      @picture = @album.pictures.find params[:pid]
+
+      task_album = @task.task_albums.where(album_id: @album.id).first
+      if task_album
+        pids = task_album.pic_ids.blank? ? Set.new : Set.new(YAML.load(task_album.pic_ids))
+        pids.add @picture.id
+        task_album.update_attribute :pic_ids, YAML.dump(pids.to_a)
+      else
+        raise ActiveRecord::RecordNotFound
+      end
+      render text: '添加成功'
+    rescue ActiveRecord::RecordNotFound => e
+      render text: "找不到对应的记录，请将一下信息发送给相关人员：<br/> #{e.message}", status: 404
+    rescue Exception => e
+      render text: e.message, status: 500
+    end
+  end
+
   private
   def tmp_task_params
     params.require(:task).permit(:for_id, :id, :title)

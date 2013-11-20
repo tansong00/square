@@ -1,4 +1,4 @@
-<div class="item" id="task-<%= task.id %>-album-<%= album.id %>">
+<div class="item" id="ta-<%= album.id %>" data-picurl="<%= add_pic_task_path(task) %>">
   <div class="image">
     <%= image_tag album.cover.url %>
     <%= link_to content_tag(:i, nil, class: 'remove icon'), 'javascript:void(0);',

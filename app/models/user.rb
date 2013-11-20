@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   has_many :attachments, class_name: 'Attachment', foreign_key: :user_id
 
   def root?
-    true
+    Settings.roots.include? username
   end
 end

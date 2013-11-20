@@ -65,3 +65,5 @@ gem 'jquery-fileupload-rails', :git => 'https://github.com/tors/jquery-fileuploa
 gem 'puma', '~> 2.6'
 
 gem 'sorcery'
+
+gem 'settingslogic'

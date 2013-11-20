@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  before_action :require_root
 
   def upload
     @album = Album.find params[:album_id]

@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :require_login
+  before_action :require_login, except: [:show]
 
   def show
     @task = Task.find params[:id]
@@ -31,7 +31,10 @@ class TasksController < ApplicationController
 
   def tmp
     @task = current_user.tasks.tmp_task.first
-    @task = current_user.tasks.create if @task.blank?
+    if @task.blank?
+      @task = current_user.tasks.new
+      @task.save!(validate: false)
+    end
     render layout: false
   end
 

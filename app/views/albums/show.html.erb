@@ -13,34 +13,38 @@
         <% end %>
       </div>
     </div>
-    <div id="pic-uploader">
-      <%= form_tag '#', id: 'fileupload', multipart: true, data: {url: upload_pictures_path} do %>
-          <%= hidden_field_tag :album_id, @album.id %>
-          <div class="ui fluid three item menu fileupload-buttonbar">
+    <% if root? %>
+        <div id="pic-uploader">
+          <%= form_tag '#', id: 'fileupload', multipart: true, data: {url: upload_pictures_path} do %>
+              <%= hidden_field_tag :album_id, @album.id %>
+              <div class="ui fluid three item menu fileupload-buttonbar">
                 <span class="item fileinput-button" style="overflow: hidden;">
                     <i class="icon upload"></i>添加文件
                     <input type="file" name="files[]" multiple="" accept="image/png, image/gif, image/jpg, image/jpeg">
                 </span>
-            <span class="item start"><i class="icon checkmark"></i>开始上传</span>
-            <span class="item cancel"><i class="icon ban circle"></i>停止上传</span>
-          </div>
-          <div id="files-container" class="ui divided list files"></div>
-      <% end %>
-    </div>
+                <span class="item start"><i class="icon checkmark"></i>开始上传</span>
+                <span class="item cancel"><i class="icon ban circle"></i>停止上传</span>
+              </div>
+              <div id="files-container" class="ui divided list files"></div>
+          <% end %>
+        </div>
+    <% end %>
   </div>
 </div>
 
-<div class="ui text menu">
-  <a class="active item" id="bupload">
-    <i class="upload icon"></i> 上传
-  </a>
-  <a class="active item" id="bedit" data-url="<%= edit_album_path(@album) %>">
-    <i class="edit icon"></i> 编辑
-  </a>
-  <a class="active item" id="bremove">
-    <i class="remove circle icon"></i> 删除图片
-  </a>
-</div>
+<% if root?  %>
+    <div class="ui text menu">
+      <a class="active item" id="bupload">
+        <i class="upload icon"></i> 上传
+      </a>
+      <a class="active item" id="bedit" data-url="<%= edit_album_path(@album) %>">
+        <i class="edit icon"></i> 编辑
+      </a>
+      <a class="active item" id="bremove">
+        <i class="remove circle icon"></i> 删除图片
+      </a>
+    </div>
+<% end %>
 
 <div class="square pictures content-wrap">
     <%= render 'content' %>

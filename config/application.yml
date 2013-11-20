@@ -1,0 +1,12 @@
+defaults: &defaults
+  roots:
+    - hellcat
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

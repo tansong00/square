@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: %i{edit update show}
+  before_action :require_root, only: [:new, :create, :edit, :update]
 
   def index
     @albums = Album.page params[:page]

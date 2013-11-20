@@ -5,7 +5,9 @@
     <div class="square pie black list">
       <ul id="shopmenu">
         <li><span class="active">相册列表</span></li>
-        <li><%= link_to '新建相册', new_album_path %></li>
+        <% if root? %>
+            <li><%= link_to '新建相册', new_album_path %></li>
+        <% end %>
         <li><%= link_to '相册搜索', root_path %></li>
       </ul>
     </div>

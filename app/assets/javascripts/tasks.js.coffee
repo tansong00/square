@@ -18,6 +18,8 @@ $ ->
       $.$pop('请在相册页面中使用该功能~')
 
   $(document).on 'click', '#for_task-sku', ->
+    _this = this
+    _args = arguments
     _$pane = $("""
              <div class="ui large form" style="width: 400px; padding: 30px 60px;">
                <div class="field">
@@ -36,7 +38,9 @@ $ ->
       unless /^\s*$/.test sku
         $.post('/tasks', sku: sku)
         .done((resp) -> $('#taskalbum-container').append(resp))
-        .fail((resp) -> setTimeout (-> $.$pop(resp.responseText)), 800)
+        .fail (resp) ->
+          $.$pop(resp.responseText)
+          _args.callee.apply(_this, _args)
 
 
   $(document).on 'click', '.remove_album', (e) ->
@@ -48,6 +52,8 @@ $ ->
       $.$pop(resp.responseText)
 
   $(document).on 'click', '#pub_task', (e) ->
+    _this = this
+    _args = arguments
     url = $(@).data('url')
     $.get(url)
     .done (resp) ->
@@ -61,5 +67,6 @@ $ ->
                 ), 800
                 $('#taskbar').sidebar('hide')
             .fail (resp) ->
-                setTimeout (-> $.$pop(resp.responseText)), 800
+              $.$pop(resp.responseText)
+              _args.callee.apply(_this, _args)
     .fail((resp) -> $.$pop(resp) )

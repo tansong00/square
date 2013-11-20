@@ -5,35 +5,28 @@
         paneDiv = '<div class="square pie" style="position:fixed;z-index:11111;top:0;min-width:300px;margin:0;word-break:break-all;min-height:0;padding:0;left:50%;display:none;max-width:50%;"></div>',
         closeDiv = '<div><img class="cancel" style="position:absolute;bottom:10px;right:10px;cursor:pointer;" src="' + closeIcon + '"/></div>',
         maskDiv = '<div style="position: fixed;_position: absolute;width: 100%;height: 100%;_height: 100000px;top: 0px;left: 0px;z-index: 10100;background: #000;filter: alpha(opacity=80);opacity: 0.8;"></div>',
-        $pane, $mask, animating = false;
+        $pane, $mask, running = false, pubSub = $({}), fnQueue = [];
 
-    $.fn.$pop = function(action) {
-        var isObject = action === Object(action);
-
-        if (action === 'out') {
-            popOut();
+    pubSub.on('next', function() {
+        if (fnQueue.length) {
+            fnQueue.shift()();
         }
         else {
-            if ($pane != null) return $pane;
-
-            $pane = initPane($(this).clone(true, true));
-            $(closeDiv).appendTo($pane).css({height: '35px', width: '100%'});
-
-
-            $pane.on('click', '.cancel', (isObject && action.cancel) || function(e) {
-                e.preventDefault();
-                $pane.trigger('cancel');
-                popOut();
-            });
-            $pane.on('click', '.ok:not(.redir)', (isObject && action.ok) || function(e) {
-                e.preventDefault();
-                $pane.trigger('ok');
-                popOut();
-            });
-
-            popIn();
-            return $pane;
+            running = false;
         }
+    });
+
+    $.fn.$pop = function(action) {
+        if (action === 'out') {
+            return popOut();
+        }
+        var cloneObj = $(this).clone(true, true);
+        fnQueue.push(delay(cloneObj, action));
+        if (!running) {
+            running = true;
+            pubSub.trigger('next');
+        }
+        return cloneObj;
     };
 
     $.$pop = function(text, action) {
@@ -45,35 +38,58 @@
         }
     };
 
+    function delay($obj, params) {
+        return function() {
+            $pane = initPane($obj);
+            bindAction($obj, params);
+            popIn();
+        };
+    }
+
+    function bindAction($obj, action) {
+        var isObject = action === Object(action);
+
+        $pane.on('click', '.cancel', (isObject && action.cancel) || function(e) {
+            e.preventDefault();
+            $obj.trigger('cancel');
+            popOut();
+        });
+
+        $pane.on('click', '.ok:not(.redir)', (isObject && action.ok) || function(e) {
+            e.preventDefault();
+            $obj.trigger('ok');
+            popOut();
+        });
+    }
+
     function initPane(content) {
-        $pane = $(paneDiv);
-        $pane.html(content);
-        $pane.appendTo('body').css({marginLeft: -($pane.width() / 2), marginTop: -$pane.height()}).show();
-        return $pane;
+        var _$pane = $(paneDiv);
+        _$pane.html(content);
+        _$pane.appendTo('body').css({marginLeft: -(_$pane.width() / 2), marginTop: -_$pane.height()}).show();
+        $(closeDiv).appendTo(_$pane).css({height: '35px', width: '100%'});
+        return _$pane;
     }
 
     function popIn() {
-        if (animating) return;
-        animating = true;
         $mask = $(maskDiv).appendTo('body');
-        $pane.animate({marginTop: 0}, 'fast', function() {
-            animating = false;
-        });
-        $pane.trigger('shown');
+        $pane.animate({marginTop: 0}, 'fast');
     }
 
     function popOut() {
-        if (animating) return;
-        animating = true;
         if ($pane != null) {
-            $pane.animate({marginTop: -$pane.height()}, function() {
-                $pane.remove();
-                $mask.remove();
-                $pane = $mask = null;
-                animating = false;
-            });
-            $pane.trigger('hidden');
+            $pane.animate({marginTop: -$pane.height()}, remove);
         }
+    }
+
+    function remove() {
+        if ($pane) {
+            $pane.remove();
+        }
+        if ($mask) {
+            $mask.remove();
+        }
+        $pane = $mask = null;
+        pubSub.trigger('next');
     }
 
 }(jQuery));

@@ -50,7 +50,7 @@ picture = ->
     $('#files-container').perfectScrollbar(wheelSpeed: 25)
 
     $('#fileupload').fileupload
-      sequentialUploads: true
+      sequentialUploads: false
       formData: (form) ->
         form.serializeArray()
 

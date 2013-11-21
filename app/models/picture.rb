@@ -30,5 +30,7 @@ class Picture < ActiveRecord::Base
 
   def delete_file
     remove_file!
+    _path = File.join(File.expand_path('origin', Rails.root), id.to_s)
+    FileUtils.rm_rf _path if File.exists? _path
   end
 end

@@ -53,8 +53,11 @@ class PictureUploader < CarrierWave::Uploader::Base
   def cp_original_file(file)
     _file = model.file.file
     _path = File.join(File.expand_path('origin', Rails.root), model.id.to_s)
-    FileUtils.mkdir _path unless File.exists? _path
-    FileUtils.cp _file.path, File.join(_path, _file.original_filename)
-    FileUtils.remove _file.path
+    _dst = File.join(_path, _file.original_filename)
+    unless File.exists? _dst
+      FileUtils.mkdir _path unless File.exists? _path
+      FileUtils.cp _file.path, _dst
+      FileUtils.remove _file.path if File.exists? _file.path
+    end
   end
 end

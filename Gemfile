@@ -67,3 +67,5 @@ gem 'puma', '~> 2.6'
 gem 'sorcery'
 
 gem 'settingslogic'
+
+gem 'rolify'

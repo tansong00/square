@@ -107,3 +107,12 @@ $ ->
               $.$pop(resp.responseText)
               _args.callee.apply(_this, _args)
     .fail((resp) -> $.$pop(resp) )
+
+  # 图片浏览
+  $(document).on 'click', '.task.cover', ->
+    _$this = $(this)
+    $.get(_$this.data('url'))
+    .done (resp) ->
+        $.$pop(resp)
+    .fail (resp) ->
+        $.$pop(resp.responseText)

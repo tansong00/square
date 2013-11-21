@@ -9,6 +9,7 @@ Square::Application.routes.draw do
     member do
       get :new_attach
       post :create_attach
+      match :authorize, via: [:get, :post]
     end
   end
   resources :comments, only: [:create]
@@ -27,6 +28,7 @@ Square::Application.routes.draw do
       get :new_attach
       post :create_attach
       patch :add_pic
+      get :list_pic
     end
   end
   resources :sessions, only: [:new, :create]

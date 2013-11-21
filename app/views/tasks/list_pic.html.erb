@@ -1,0 +1,5 @@
+<div class="album pictures-list clearfix">
+<% @pictures.each do |pic| %>
+    <div class="pic-thumb"><%= image_tag pic.file.url(:thumb) %></div>
+<% end %>
+</div>

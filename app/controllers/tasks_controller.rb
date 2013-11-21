@@ -94,7 +94,7 @@ class TasksController < ApplicationController
 
       task_album = @task.task_albums.where(album_id: @album.id).first
       if task_album
-        pids = task_album.pic_ids.blank? ? Set.new : Set.new(YAML.load(task_album.pic_ids))
+        pids = task_album.parsed_pic_ids
         pids.add @picture.id
         task_album.update_attribute :pic_ids, YAML.dump(pids.to_a)
       else
@@ -107,6 +107,17 @@ class TasksController < ApplicationController
       render text: e.message, status: 500
     end
   end
+
+  def list_pic
+    @task_album = TaskAlbum.where(task_id: params[:id], album_id: params[:aid]).first
+    if @task_album.present?
+      @pictures = Picture.find @task_album.parsed_pic_ids.to_a
+      render layout: false
+    else
+      render text: '找不到对应记录', status: 400
+    end
+  end
+
 
   private
   def tmp_task_params

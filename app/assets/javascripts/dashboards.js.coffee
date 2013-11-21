@@ -10,4 +10,7 @@ $ ->
 
   $(document).on 'click', '#for_newattach', (e) ->
     e.preventDefault()
-    $.get @href, (resp) -> $(resp).$pop()
+    if logged_in
+      $.get @href, (resp) -> $(resp).$pop()
+    else
+      $('#for_login').trigger('click')

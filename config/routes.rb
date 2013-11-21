@@ -27,6 +27,7 @@ Square::Application.routes.draw do
       get :new_attach
       post :create_attach
       patch :add_pic
+      get :list_pic
     end
   end
   resources :sessions, only: [:new, :create]

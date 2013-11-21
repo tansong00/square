@@ -1,3 +1,21 @@
-// Place all the styles related to the tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.square.row {
+  width: 100%;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.task.album.row {
+  .cover {
+    float: left;
+    text-align: center;
+    height: 140px;
+    width: 140px;
+  }
+}
+
+.album.pictures-list {
+  .pic-thumb {
+    float: left;
+    width: 20%;
+  }
+}

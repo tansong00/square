@@ -1,0 +1,9 @@
+<div class="ui stackable items">
+  <% @tasks.each do |task| %>
+      <div class="item">
+        <div class="content">
+          <div class="name"><%= link_to task.title, task_path(task) %></div>
+        </div>
+      </div>
+  <% end %>
+</div>

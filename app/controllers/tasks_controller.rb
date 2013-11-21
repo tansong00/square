@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
   before_action :require_login, except: [:show]
 
+  def index
+    @tasks = Task.all
+  end
+
   def show
     @task = Task.find params[:id]
     @albums = @task.albums

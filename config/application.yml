@@ -1,6 +1,7 @@
 defaults: &defaults
   roots:
     - hellcat
+    - user
 
 development:
   <<: *defaults

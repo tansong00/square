@@ -21,28 +21,29 @@ $ ->
 
   $(document).on 'click', '#bremove', (e) ->
     e.preventDefault()
-    _$cover = $('.cover')
-    if _$cover.transition('is looping')[0]
-      _$cover.transition('remove looping')
-      _$cover.removeClass().addClass('square center cover add_pic')
+    _$pic_gallery = $('#pic-gallery')
+    if _$pic_gallery.hasClass('removeable')
+      _$pic_gallery.removeClass('removeable')
+      $('#pic-gallery-signal').removeClass()
     else
-      _$cover
-      .transition('set looping')
-      .transition('bounce', '2000ms')
+      _$pic_gallery.addClass('removeable')
+      $('#pic-gallery-signal').removeClass().addClass('show remove')
 
-  $(document).on 'click', '.cover.looping', ->
+  $(document).on 'click', '#pic-gallery.removeable .cover', ->
     _$cover = $(@)
-    $("""
-      <p class="square center">是否删除？</p>
-      <p class="square center">
-      <span class="cancel square button small w">取消</span>
-      <span class="ok square button small">确定</span>
-      </p>""")
-    .$pop()
-    .on 'click', '.ok', ->
-        $.post _$cover.data('url'), {_method: 'delete'}, (resp) ->
-          $.$pop(null, 'out')
-          _$cover.closest('.column').remove()
+    _$taskbar = $('#taskbar')
+    unless _$taskbar.length and _$taskbar.sidebar('is open')
+      $("""
+        <p class="square center">是否删除？</p>
+        <p class="square center">
+        <span class="cancel square button small w">取消</span>
+        <span class="ok square button small">确定</span>
+        </p>""")
+      .$pop()
+      .on 'click', '.ok', ->
+          $.post _$cover.data('url'), {_method: 'delete'}, (resp) ->
+            $.$pop(null, 'out')
+            _$cover.closest('.column').remove()
 
 
 picture = ->

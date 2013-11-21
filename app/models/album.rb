@@ -1,4 +1,6 @@
 class Album < ActiveRecord::Base
+  resourcify
+
   mount_uploader :cover, CoverUploader
 
   validates :sku, uniqueness: true

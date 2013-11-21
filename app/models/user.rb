@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
   authenticates_with_sorcery!
 
   validates :username, presence: true, uniqueness: true

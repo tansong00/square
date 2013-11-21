@@ -11,14 +11,17 @@
   Math.round(num*vv)/vv
 
 $ ->
+  # 弹出上传面板
   $(document).on 'click', '#bupload', ->
     $('#pic-gallery-wrap').slideToggle()
 
+  # 弹出编辑面板
   $(document).on 'click', '#bedit', ->
     _$this = $(@)
     $.get _$this.data('url'), (resp) ->
       $(resp).$pop()
 
+  # 进入可删除状态
   $(document).on 'click', '#bremove', (e) ->
     e.preventDefault()
     _$pic_gallery = $('#pic-gallery')
@@ -29,6 +32,7 @@ $ ->
       _$pic_gallery.addClass('removeable')
       $('#pic-gallery-signal').removeClass().addClass('show remove')
 
+  # 删除单张图片
   $(document).on 'click', '#pic-gallery.removeable .cover', ->
     _$cover = $(@)
     _$taskbar = $('#taskbar')
@@ -44,6 +48,22 @@ $ ->
           $.post _$cover.data('url'), {_method: 'delete'}, (resp) ->
             $.$pop(null, 'out')
             _$cover.closest('.column').remove()
+
+
+  $(document).on 'click', '#bauthorize', ->
+    _$this = $(this)
+    _args = arguments
+    _this = this
+    url = _$this.data('url')
+    $.get url, (resp) ->
+      _$pane = $(resp).$pop()
+      .on 'ok', ->
+        $.post(url, _$pane.find('form').serialize())
+        .done (resp) ->
+          $.$pop(resp)
+        .fail (resp) ->
+          $.$pop(resp.responseText)
+          _args.callee.call(_this, _args)
 
 
 picture = ->

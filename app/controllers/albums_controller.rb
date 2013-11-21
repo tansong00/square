@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: %i{edit update show}
-  before_action :require_root, only: [:new, :create, :edit, :update]
+  before_action :require_root, only: [:new, :create, :edit, :update, :authorize]
 
   def index
     @albums = Album.page params[:page]
@@ -52,6 +52,31 @@ class AlbumsController < ApplicationController
       redirect_to @album
     else
       redirect_to @album
+    end
+  end
+
+  def authorize
+    @album = Album.find params[:id]
+    if request.method == 'POST'
+      @user = User.find params[:authorize_user_id]
+      role = if params[:manageable] or (params[:readable] and params[:writable])
+              :manageable
+            elsif params[:readable]
+              :readable
+            elsif params[:writable]
+              :writable
+            else
+               false
+            end
+      if role
+        @user.add_role role, @album
+        render text: "[#{@user.username}] 授权成功"
+      else
+        render text: '授权失败，请检查表单授权动作', status: 400
+      end
+    else
+      @users = User.where.not(id: current_user.id)
+      render layout: false
     end
   end
 

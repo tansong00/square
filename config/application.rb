@@ -9,6 +9,7 @@ Bundler.require(:default, Rails.env)
 require 'carrierwave/orm/activerecord'
 require 'yaml'
 require 'set'
+require 'fileutils'
 
 module Square
   class Application < Rails::Application

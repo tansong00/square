@@ -5,19 +5,17 @@ $ ->
   # 添加单图
   $(document).on 'click', '.add_pic', ->
     _$this = $(this)
-    if !_$this.is('.looping') and canAddPic
+    aid = $('#picture-js').data('id')
+    _$ta = $("#ta-#{aid}")
+    if !_$this.is('.looping') and canAddPic and _$ta.length
 
       # 拷贝图片副本
       _$img = _$this.find('img')
       offset = _$img.offset()
       _$img2 = _$img.clone(true).appendTo('body').css(display: 'none', position: 'absolute',  top: offset.top + 'px', left: offset.left + 'px', zIndex: 10001)
 
-      # 计算目标位置
-      aid = $('#picture-js').data('id')
-      _$ta = $("#ta-#{aid}")
-      offset2 = _$ta.find('img').offset()
-
       # 开始位移
+      offset2 = _$ta.find('img').offset()
       _$img2.show()
         .animate top: offset.top - 30 + 'px', opacity: 0.95, ->
           _$img2.animate top: offset2.top + 'px', left: offset2.left + 'px', opacity: 0.6, 'slow', ->

@@ -6,15 +6,15 @@
       </div>
       <div class="comment clearfix">
         <div class="arrow1"></div>
-        <div class="arrow2" style="border-right-color:#424351;"></div>
+        <%= content_tag :div, nil, style: "border-right-color:#{comment.user.bubble_color};", class: 'arrow2' %>
         <div class="replyicon">
           <div class="boardiconbox pie">
-            <div  style="background-color:#424351;height: 64px;width: 64px;"></div>
+            <%= content_tag :div, nil, style: "background-color:#{comment.user.bubble_color};height:64px;width:64px;"%>
           </div>
           <div class="username"><%= comment.user.try(:username) || 'No name' %></div>
         </div>
         <div class="replyvalueout">
-          <div class="replyvalue pie" style="background-color:#424351"><%= comment.content %></div>
+          <%= content_tag :div, comment.content, class: 'replyvalue pie', style: "background-color:#{comment.user.bubble_color}" %>
         </div>
       </div>
   <% end %>

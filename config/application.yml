@@ -1,6 +1,13 @@
 defaults: &defaults
   roots:
     - hellcat
+  bubble_colors:
+    - '#2d2c2d'
+    - '#8b99c2'
+    - '#97B9C5'
+    - '#F18FA6'
+    - '#C98BB0'
+    - '#91c0ed'
 
 development:
   <<: *defaults

@@ -12,3 +12,9 @@ $ ->
         def.fail (resp) ->
           $.$pop '登录失败'
           _args.callee.apply(_this, _args)
+
+  $(document).on 'click', '.bubble-select', ->
+    _$this = $(this)
+    _$this.siblings('.bubble-select').removeClass('checked')
+    _$this.removeClass('checked').addClass('checked')
+    $('#user_bubble_color').val _$this.data('color')

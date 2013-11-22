@@ -1,13 +1,18 @@
 class AlbumsController < ApplicationController
-  load_and_authorize_resource
+  before_action :set_album, only: [:edit, :update, :show, :download, :authorize, :create_attach, :new_attach]
+
+  authorize_resource
 
   def index
+    @albums = Album.page params[:page]
   end
 
   def new
+    @album = Album.new
   end
 
   def create
+    @album = Album.new album_params
     if @album.save
       redirect_to albums_url
     else
@@ -69,6 +74,10 @@ class AlbumsController < ApplicationController
   end
 
   private
+  def set_album
+    @album = Album.find params[:id]
+  end
+
   def album_params
     params.require(:album).permit(:title, :sku, :cover)
   end

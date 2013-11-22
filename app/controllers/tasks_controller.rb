@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :require_login, except: [:show]
+  authorize_resource
 
   def show
     @task = Task.find params[:id]

@@ -1,18 +1,15 @@
 class AttachmentsController < ApplicationController
-  before_action :require_login
+  load_and_authorize_resource
 
   def destroy
     if current_user.root?
-      @attachment = Attachment.find params[:id]
       @attachment.destroy
     else
-      @attachment = current_user.attachments.find params[:id]
       @attachment.destroy
     end
   end
 
   def download
-    @attachment = Attachment.find params[:id]
     send_file @attachment.file.file.path
   end
 

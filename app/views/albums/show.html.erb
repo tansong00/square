@@ -35,7 +35,7 @@
   </div>
 </div>
 
-<% if root?  %>
+<% if can? :manage, @album  %>
     <div class="ui text menu">
       <a class="active item" id="bupload">
         <i class="upload icon"></i> 上传

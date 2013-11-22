@@ -48,6 +48,11 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def download
+    @picture = @album.pictures.find params[:pid]
+    send_file @picture.original_filepath
+  end
+
   def authorize
     if request.method == 'POST'
       @user = User.find params[:authorize_user_id]

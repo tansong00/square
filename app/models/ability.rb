@@ -27,6 +27,7 @@ class Ability
       can :list_pic, Task
       can :publish, Task
 
+      can :create, Comment
       basic_read
     else
       basic_read

@@ -29,7 +29,7 @@ $ ->
       _$pic_gallery.removeClass('removeable')
       $('#pic-gallery-signal').removeClass()
     else
-      _$pic_gallery.addClass('removeable')
+      _$pic_gallery.removeClass().addClass('ui grid stackable five column clearfix removeable')
       $('#pic-gallery-signal').removeClass().addClass('show remove')
 
   # 删除单张图片
@@ -49,7 +49,7 @@ $ ->
             $.$pop(null, 'out')
             _$cover.closest('.column').remove()
 
-
+  # 用户授权
   $(document).on 'click', '#bauthorize', ->
     _$this = $(this)
     _args = arguments
@@ -64,6 +64,24 @@ $ ->
         .fail (resp) ->
           $.$pop(resp.responseText)
           _args.callee.call(_this, _args)
+
+  # 进入下载状态
+  $(document).on 'click', '#bdownload', (e) ->
+    e.preventDefault()
+    _$pic_gallery = $('#pic-gallery')
+    if _$pic_gallery.hasClass('downloadable')
+      _$pic_gallery.removeClass('downloadable')
+      $('#pic-gallery-signal').removeClass()
+    else
+      _$pic_gallery.removeClass().addClass('ui grid stackable five column clearfix downloadable')
+      $('#pic-gallery-signal').removeClass().addClass('show download')
+
+  # 下载单张图片
+  $(document).on 'click', '#pic-gallery.downloadable .cover', ->
+    _$this = $(this)
+    pid = _$this.data('id')
+    url = $('#bdownload').data('url')
+    window.location.href = "#{url}?pid=#{pid}"
 
 
 picture = ->

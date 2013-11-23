@@ -95,6 +95,7 @@ GEM
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
     minitest (4.7.5)
+    mousetrap-rails (0.0.11)
     multi_json (1.8.2)
     multipart-post (1.2.0)
     oauth (0.4.7)
@@ -188,6 +189,7 @@ DEPENDENCIES
   meta_request
   mime-types
   mini_magick
+  mousetrap-rails
   pry
   puma (~> 2.6)
   rails (= 4.0.0)

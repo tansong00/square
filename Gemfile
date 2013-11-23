@@ -70,3 +70,5 @@ gem 'settingslogic'
 
 gem 'rolify'
 gem 'cancan'
+
+gem 'mousetrap-rails'

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require mousetrap
 //= require turbolinks
 //= require semantic-ui
 //= require ./lib/nprogress

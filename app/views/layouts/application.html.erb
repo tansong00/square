@@ -21,7 +21,8 @@
 
       <div class="menu right">
           <% if logged_in? %>
-            <%= link_to image_tag('/images/cat.png', class: 'login c i'), logout_path, method: :delete, class: 'item', id: 'for_login2', style: 'border-radius: 100px;' %>
+            <%= link_to image_tag('/images/cat.png', class: 'login c i'), user_path(current_user),
+                        class: 'item', id: 'logged_me', style: 'border-radius: 100px;' %>
           <% else %>
             <a href="javascript:void(0);" id="for_login" class="item" style="border-radius: 100px;">
               <%= content_tag :span, '登录', class: 'login c t', id: 'btn4login' %>

@@ -20,6 +20,10 @@ class Picture < ActiveRecord::Base
     file.file.size
   end
 
+  def original_filepath
+    File.join(File.expand_path('origin', Rails.root), id.to_s, file.file.original_filename)
+  end
+
   before_save :save_attr
   after_destroy :delete_file
 

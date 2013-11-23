@@ -175,6 +175,11 @@
       display: block;
     }
   }
+  &.download {
+    .download {
+      display: block;
+    }
+  }
 }
 
 .pictures .signal {

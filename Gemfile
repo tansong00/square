@@ -69,3 +69,4 @@ gem 'sorcery'
 gem 'settingslogic'
 
 gem 'rolify'
+gem 'cancan'

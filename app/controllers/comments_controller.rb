@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :require_login
+  authorize_resource
 
   def create
     klass = params[:type].capitalize.constantize

@@ -10,6 +10,7 @@ Square::Application.routes.draw do
       get :new_attach
       post :create_attach
       match :authorize, via: [:get, :post]
+      get :download
     end
   end
   resources :comments, only: [:create]

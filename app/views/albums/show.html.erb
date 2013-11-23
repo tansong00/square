@@ -3,13 +3,14 @@
 <div class="square ui pictures">
   <div id="pic-gallery-signal">
     <div class="signal remove">删 除</div>
+    <div class="signal download">下 载</div>
   </div>
   <div class="square pie nomargin clearfix" id="pic-pane">
     <div id="pic-gallery-wrap" class="clearfix">
       <div id="pic-gallery" class="ui grid stackable five column clearfix">
         <% @pictures.each do |pic| %>
             <div class="column">
-              <div class="square center cover add_pic" data-url="<%= picture_path(pic) %>">
+              <div class="square center cover add_pic" data-url="<%= picture_path(pic) %>" data-id="<%= pic.id %>">
                 <%= link_to image_tag(pic.file.url(:thumb), data: {pid: pic.id}), 'javascript:void(0);' %>
               </div>
             </div>
@@ -35,8 +36,9 @@
   </div>
 </div>
 
-<% if root?  %>
-    <div class="ui text menu">
+
+<div class="ui text menu">
+  <% if can? :manage, @album  %>
       <a class="active item" id="bupload">
         <i class="upload icon"></i> 上传
       </a>
@@ -49,8 +51,15 @@
       <a class="active item" id="bauthorize" data-url="<%= authorize_album_path(@album) %>">
         <i class="remove circle icon"></i> 用户授权
       </a>
-    </div>
-<% end %>
+  <% end %>
+
+  <% if can? :download, @album %>
+  <a class="active item" id="bdownload" data-url="<%= download_album_path(@album) %>">
+    <i class="download disk icon"></i> 下载图片
+  </a>
+  <% end %>
+</div>
+
 
 <div class="square pictures content-wrap">
     <%= render 'content' %>

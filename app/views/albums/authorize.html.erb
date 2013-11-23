@@ -1,23 +1,15 @@
 <div class="ui form large" style="width: 400px; padding: 30px 60px;">
   <%= form_tag authorize_album_path(@album) do %>
       <div class="field">
-        <%= label_tag :authorize_user_id %>
+        <%= label_tag :authorize_user_id, '授权可下载用户' %>
         <%= select_tag :authorize_user_id,
                        options_from_collection_for_select(@users, :id, :username), class: 'ui selection dropdown', style: 'width: 100%;' %>
       </div>
 
       <div class="inline field">
         <div class="ui checkbox">
-          <%= check_box_tag :manageable, 1, params[:manageable] %>
-          <%= label_tag :manageable %>
-        </div>
-        <div class="ui checkbox">
-          <%= check_box_tag :readable, 1, params[:readable] %>
-          <%= label_tag :readable %>
-        </div>
-        <div class="ui checkbox">
-          <%= check_box_tag :writable, 1, params[:writable] %>
-          <%= label_tag :writable %>
+          <%= check_box_tag :all, 1, params[:all] %>
+          <%= label_tag :all, '对所有相册有效' %>
         </div>
       </div>
 

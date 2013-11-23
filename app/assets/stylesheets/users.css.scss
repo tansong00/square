@@ -1,4 +1,4 @@
-#for_login, #for_login2 {
+#for_login, #logged_me {
   $sq: 120px;
 
   display: block;
@@ -38,7 +38,7 @@
   margin-right: auto;
 }
 
-.user.new {
+.user {
   .bubble-select {
     width: 30px;
     height:30px;
@@ -52,5 +52,35 @@
         display: inline;
       }
     }
+  }
+}
+
+.user {
+  &.dialog, &.container {
+    position: relative;
+    height: 550px;
+  }
+  &.center {
+    position: absolute;
+    top: 30px;
+    bottom: 10px;
+    left: 15px;
+    right: 15px;
+  }
+  .menu {
+    margin: 0;
+  }
+  .content {
+    margin-top: 20px;
+    height: 452px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .tasks, .info {
+    width: 100%;
+    height: 100%;
+  }
+  .task-item {
+
   }
 }

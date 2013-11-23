@@ -28,8 +28,17 @@ class Ability
       can :publish, Task
 
       can :create, Comment
+
+      can :read, User do |_user|
+        _user.id = user.id
+      end
+      can :update, User do |_user|
+        _user.id = user.id
+      end
+      can :create, User
       basic_read
     else
+      can :create, User
       basic_read
     end
     #

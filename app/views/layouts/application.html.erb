@@ -16,7 +16,8 @@
     <div class="container">
       <%= link_to '首页', root_path, class: 'item' %>
       <%= link_to '相册', albums_path, class: 'item' %>
-      <%= link_to '任务', 'javascript:void(0);', id: 'for_taskbar', class: 'item' %>
+      <%= link_to '新建任务', 'javascript:void(0);', id: 'for_taskbar', class: 'item' %>
+      <%= link_to '任务列表',tasks_path, class: 'item' %>
 
       <div class="menu right">
           <% if logged_in? %>

@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
   authorize_resource
 
+  def index
+    @tasks = Task.all
+  end
+
   def show
     @task = Task.find params[:id]
     @albums = @task.albums

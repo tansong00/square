@@ -1,6 +1,7 @@
 defaults: &defaults
   roots:
     - hellcat
+    - user
   bubble_colors:
     - '#2d2c2d'
     - '#8b99c2'

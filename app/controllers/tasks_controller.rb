@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   authorize_resource
 
   def index
-    @tasks = Task.all
+    @tasks = Task.where.not(published_at: nil).page params[:page]
   end
 
   def show

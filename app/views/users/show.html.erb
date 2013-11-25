@@ -1,29 +1,24 @@
 <div class="user container">
     <div class="user center">
       <div class="ui secondary pointing menu">
-        <div class="header item">用户：<%= current_user.username %></div>
+        <div class="header item active"><i class="user icon"></i><%= current_user.username %></div>
 
-        <a class="active item">
-          <i class="home icon"></i> Info
-        </a>
         <a class="item">
-          <i class="mail icon"></i> Messages
+          <i class="info icon"></i> 用户信息
         </a>
-        <a class="item">
-          <i class="user icon"></i> Friends
-        </a>
+
         <div class="right menu">
           <%= link_to 'Logout', logout_path, method: :delete, class: 'ui item' %>
         </div>
       </div>
 
       <div class="content">
-        <div class="info">
+        <div class="userinfo">
           <div class="dialog">
             <%= render 'user_info' %>
           </div>
         </div>
-        <div class="tasks">
+        <div class="usertasks">
 
         </div>
       </div>

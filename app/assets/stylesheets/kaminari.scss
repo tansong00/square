@@ -1,0 +1,22 @@
+.pagination {
+  span {
+    font-size: 13px;
+    padding-left: 3px;
+    display: inline-block;
+    &.current {
+      padding: 4px 7px 4px 10px;
+      text-shadow: 0 0 1px #000;
+    }
+  }
+  a {
+    display: inline-block;
+    color: #888;
+    background: #eee;
+    text-decoration: none;
+    padding: 4px 10px;
+    &:hover {
+      color: #eee;
+      background: #888;
+    }
+  }
+}

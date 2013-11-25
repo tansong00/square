@@ -1,9 +1,9 @@
 .square.albums {
   .square.pie {
-    margin-left: 0;
+    margin: 0;
   }
   .square.pie.black {
-    z-index: 1000;
+    z-index: 1;
     padding-right: 0;
     margin-left: 10px;
     ul {
@@ -56,9 +56,22 @@
   }
 }
 
+.album.pagination {
+  margin: 20px 0;
+}
+
 .square.cover {
   height: 140px;
   width: 140px;
   display: table-cell;
   vertical-align: middle;
+}
+
+.square {
+  &.floating {
+    float: left;
+    &.right {
+      float: right;
+    }
+  }
 }

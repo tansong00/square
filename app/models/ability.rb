@@ -28,6 +28,7 @@ class Ability
       can :publish, Task
 
       can :create, Comment
+      can :owns, Comment
 
       can :read, User do |_user|
         _user.id = user.id
@@ -64,5 +65,6 @@ class Ability
   def basic_read
     can :read, Album
     can :read, Task
+    can :read, Comment
   end
 end

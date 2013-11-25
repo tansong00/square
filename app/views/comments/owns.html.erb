@@ -1,0 +1,11 @@
+<ul>
+  <% @comments.each do |comment| %>
+      <%= render comment.commentable_type.underscore, comment: comment %>
+  <% end %>
+</ul>
+
+<div class="square pagination clearfix album remote">
+  <div class="square floating right">
+    <%= paginate @comments %>
+  </div>
+</div>

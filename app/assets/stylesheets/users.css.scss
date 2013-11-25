@@ -76,11 +76,42 @@
     width: 100%;
     overflow: hidden;
   }
-  .usertasks, .userinfo {
-    width: 100%;
-    height: 100%;
-  }
-  .task-item {
 
+  #usertasks, #userinfo, #usercomments {
+    height: 452px;
+    position: relative;
+    overflow: hidden;
+  }
+  #usercomments {
+    ul {
+      margin: 0 20px;
+      padding: 0;
+      list-style: none;
+      height: 372px;
+    }
+    img {
+      $hg: 60px;
+      max-height: $hg;
+      max-width: $hg;
+      min-height: $hg;
+      min-width: $hg;
+      float: left;
+      margin-right: 20px;
+    }
+    h4 {
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+      font-weight: bolder;
+      margin-bottom: 6px;
+      margin-left: 80px;
+      margin-top: 12px;
+    }
+    .textblock {
+      overflow: hidden;
+      zoom: 1;
+    }
+    p {
+      color: #555;
+      font-size: 0.9em;
+    }
   }
 }

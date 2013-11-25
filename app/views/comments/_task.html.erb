@@ -1,0 +1,9 @@
+<li class="clearfix">
+  <h4>[<%= comment.commentable_type %>] <%= comment.resource.title %></h4>
+  <div class="textblock">
+    <%= link_to image_tag('/images/cat.png'), comment.resource %>
+    <p class="description">
+      <%= truncate comment.content, length: 60, omission: '...' %>
+    </p>
+  </div>
+</li>

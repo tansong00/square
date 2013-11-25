@@ -13,7 +13,11 @@ Square::Application.routes.draw do
       get :download
     end
   end
-  resources :comments, only: [:create]
+  resources :comments, only: [:create] do
+    collection do
+      get :owns
+    end
+  end
   resources :pictures do
     collection do
       post :upload

@@ -1,10 +1,14 @@
 <div class="user container">
     <div class="user center">
-      <div class="ui secondary pointing menu">
-        <div class="header item active"><i class="user icon"></i><%= current_user.username %></div>
+      <div class="ui secondary pointing menu js">
+        <div class="header item"><i class="user icon"></i><%= current_user.username %></div>
 
-        <a class="item">
+        <a class="item active" data-for="#userinfo">
           <i class="info icon"></i> 用户信息
+        </a>
+
+        <a class="item" id="for_usercomments" data-for="#usercomments" >
+          <i class="comment icon"></i> 我的留言
         </a>
 
         <div class="right menu">
@@ -12,14 +16,13 @@
         </div>
       </div>
 
-      <div class="content">
-        <div class="userinfo">
-          <div class="dialog">
+      <div class="content menu">
+        <div class="dialog">
+          <div class="userinfo menu-pane" id="userinfo">
             <%= render 'user_info' %>
           </div>
-        </div>
-        <div class="usertasks">
 
+          <%= content_tag :div, nil, class: 'usercomments menu-pane', style: 'display: none;', id: 'usercomments', 'data-resource' => owns_comments_path %>
         </div>
       </div>
     </div>

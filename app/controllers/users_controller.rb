@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   authorize_resource
 
   def show
-    @user = User.find params[:id]
+    @user = current_user
     @bubble_color = @user.bubble_color
     render layout: false
   end

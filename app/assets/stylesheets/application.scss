@@ -17,6 +17,10 @@
 
 @import "semantic-ui";
 
+a {
+  text-decoration: none;
+}
+
 #nprogress {
   position: relative;
   z-index: 9999;

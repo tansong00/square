@@ -1,7 +1,7 @@
 namespace :pictures do
   desc 'Import pictures'
   task :import => :environment do
-    path = File.join File.expand_path('../../../public', __FILE__), ENV['DIR']
+    path = File.expand_path(ENV['DIR'])
 
     if File.directory? path
       Dir["#{path}/**/**"].each do |file|

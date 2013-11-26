@@ -78,10 +78,12 @@ $ ->
 
   # 下载单张图片
   $(document).on 'click', '#pic-gallery.downloadable .cover', ->
-    _$this = $(this)
-    pid = _$this.data('id')
-    url = $('#bdownload').data('url')
-    window.location.href = "#{url}?pid=#{pid}"
+    _$taskbar = $('#taskbar')
+    unless _$taskbar.length and _$taskbar.sidebar('is open')
+      _$this = $(this)
+      pid = _$this.data('id')
+      url = $('#bdownload').data('url')
+      window.location.href = "#{url}?pid=#{pid}"
 
 
 picture = ->

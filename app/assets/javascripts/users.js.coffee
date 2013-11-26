@@ -5,6 +5,7 @@ $ ->
     _this = this
     $.get '/sessions/new', (resp) ->
       _$pane = $(resp).css(width: "300px", padding: '20px 60px').$pop()
+      _$pane.find('input[name="username"]').focus()
       _$pane.on 'ok', ->
         _$form = _$pane.find('form')
         def = $.post _$form[0].action, _$form.serialize()

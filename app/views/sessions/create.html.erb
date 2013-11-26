@@ -7,7 +7,8 @@
   <div class="container">
     <%= link_to '首页', root_path, class: 'item' %>
     <%= link_to '相册', albums_path, class: 'item' %>
-    <a id="for_taskbar" class="item" href="javascript:void(0);">任务</a>
+    <%= link_to '新建任务', 'javascript:void(0);', id: 'for_taskbar', class: 'item' %>
+    <%= link_to '任务列表',tasks_path, class: 'item' %>
 
     <div class="menu right">
       <%= link_to image_tag('/images/cat.png', class: 'login c i'), user_path(current_user),

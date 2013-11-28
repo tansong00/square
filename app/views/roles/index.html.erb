@@ -1,0 +1,27 @@
+<div class="ui list">
+  <% @users.each do |user| %>
+      <div class="item">
+        <div class="content"><%= user.username %></div>
+        <% if user.roles.present? %>
+            <table class="ui table segment">
+              <thead>
+              <tr>
+                <th>角色名</th>
+                <th>资源</th>
+                <th>操作</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% user.roles.each do |role| %>
+                  <tr>
+                    <td><%= role.name %></td>
+                    <td>[<%= role.resource_type %>] <%= role.resource_id ? link_to(role.resource_id, send(role.resource_type.underscore + '_path', role.resource_id)) : 'ALL' %></td>
+                    <td><%= link_to '取消', role_path(role, user_id: user.id), method: :delete %></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+        <% end %>
+      </div>
+  <% end %>
+</div>

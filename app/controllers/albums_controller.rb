@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
   authorize_resource
 
   def index
-    @albums = Album.page params[:page]
+    @albums = Album.lasts.page params[:page]
   end
 
   def new

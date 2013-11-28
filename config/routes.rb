@@ -41,6 +41,8 @@ Square::Application.routes.draw do
   resources :attachments, only: [:destroy] do
     get :download, on: :member
   end
+  resources :roles, only: [:index, :destroy]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

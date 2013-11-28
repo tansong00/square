@@ -10,6 +10,10 @@
     <%= link_to '新建任务', 'javascript:void(0);', id: 'for_taskbar', class: 'item' %>
     <%= link_to '任务列表',tasks_path, class: 'item' %>
 
+    <% if can? :manage, :role %>
+        <%= link_to '权限管理', roles_path, class: 'item' %>
+    <% end %>
+
     <div class="menu right">
       <%= link_to image_tag('/images/cat.png', class: 'login c i'), user_path(current_user),
                   class: 'item', id: 'logged_me', style: 'border-radius: 100px;' %>

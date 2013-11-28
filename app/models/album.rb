@@ -3,6 +3,8 @@ class Album < ActiveRecord::Base
 
   mount_uploader :cover, CoverUploader
 
+  scope :lasts, -> { order('id DESC') }
+
   validates :sku, uniqueness: true
 
   has_many :pictures, class_name: 'Picture', foreign_key: :album_id, dependent: :destroy

@@ -11,7 +11,7 @@
         <% @pictures.each do |pic| %>
             <div class="column">
               <div class="square center cover add_pic" data-url="<%= picture_path(pic) %>" data-id="<%= pic.id %>">
-                <%= link_to image_tag(pic.file.url(:thumb), data: {pid: pic.id}), 'javascript:void(0);' %>
+                <%= link_to image_tag(pic.file.url(:thumb), data: {pid: pic.id, url: pic.file.url(:thumb)}), 'javascript:void(0);' %>
               </div>
             </div>
         <% end %>
